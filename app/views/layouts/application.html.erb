@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  	<title><%= get_page_title(yield(:title)) %></title>
+	  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  	<%= csrf_meta_tags %>
+	</head>
+	<body>
+	<!-- The header for the entire website -->
+		<%= render 'layouts/header' %>
+    
+    	<!-- The actual pages from the views are loaded here -->
+    	<div class="container">
+      		<%= yield %>
+    	</div>
+    	<%= render 'layouts/footer' %>
+    	<%= debug(params) if Rails.env.development? %>
+	</body>
+</html>
