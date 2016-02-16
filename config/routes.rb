@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'users/new'
 
   # The root page of the application
