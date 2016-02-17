@@ -55,3 +55,9 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+
+/* Forms "required" label */
+label.required:after {
+    content: " *";
+    color: red;
+}

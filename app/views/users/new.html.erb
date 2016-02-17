@@ -10,17 +10,23 @@
   	<div class="col-md-6 col-md-offset-3">
   		<p> <h3> Enter your details below </h3> </p>
     	<%= form_for(@user) do |f| %>
-			<%= f.label :name %>
+			<%= f.label :name, "Name*" %>
 			<%= f.text_field :name %>
 
-			<%= f.label :email %>
+			<%= f.label :email, "Email*" %>
 			<%= f.email_field :email %>
 
-			<%= f.label :password %>
+			<%= f.label :password, "Password*" %>
 			<%= f.password_field :password %>
 
-			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.label :password_confirmation, "Confirm Password*" %>
 			<%= f.password_field :password_confirmation %>
+
+			<%= f.label :ph_number, "Phone Number" %>
+			<%= f.text_field :ph_number %>
+
+			<%= f.label :address, "Address" %>
+			<%= f.text_field :address %>
 
 			<% if type_id == "1" %>
 				<%= f.hidden_field :utype, value: "admin" %>
