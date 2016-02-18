@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :courses
   get 'users/new'
 
   # The root page of the application
