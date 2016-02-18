@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # The root page of the application
   root 'static_pages#home'
 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'login' => 'user_session#create'
   delete 'logout' => 'user_session#destroy'
   resources :users
+  resources :courses
 
   # This is easy, but for security reasons, dont use this
   # match ':controller(/:action(/:id))', :via => :get
