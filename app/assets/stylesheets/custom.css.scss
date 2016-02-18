@@ -56,8 +56,17 @@ input {
   height: auto !important;
 }
 
-/* Forms "required" label */
-label.required:after {
-    content: " *";
-    color: red;
+#error_desc {
+  color: red;
+  ul {
+  color: red;
+  margin: 0 0 30px 0;
+  }
+}
+
+.error_fields {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }

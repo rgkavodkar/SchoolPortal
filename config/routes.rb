@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'users/new'
-
   # The root page of the application
   root 'static_pages#home'
 
@@ -9,6 +7,9 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   get 'signup' => 'users#new'
+  get 'login' => 'user_session#new'
+  post 'login' => 'user_session#create'
+  delete 'logout' => 'user_session#destroy'
   resources :users
 
   # This is easy, but for security reasons, dont use this
