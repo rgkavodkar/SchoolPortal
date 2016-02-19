@@ -15,7 +15,11 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    if current_user.utype == "admin"
+      @course = Course.new
+    else
+      redirect_to unauthorized_url
+    end
   end
 
   # GET /courses/1/edit
