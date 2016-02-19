@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :student_courses
   # The root page of the application
   root 'static_pages#home'
 
