@@ -4,44 +4,45 @@
     	<nav>           
             <ul class="nav navbar-nav navbar-right">
                 <% if logged_in? %>
-            	   <li><%= link_to "Profile", "#" %></li>
-                    <% if @user.utype == "admin" %>
+                <!-- user_path(current_user) -->
+            	   <li><%= link_to "Profile", user_path(current_user) %></li>
+                    <% if current_user.utype == "admin" %>
                     
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Actions <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><%=  link_to "Course catalogue", "#", class: "active" %></li>
-                                <li><%=  link_to "User list", "#", class: "active" %></li>
+                                <li><%=  link_to "Course catalogue", "#"%></li>
+                                <li><%=  link_to "User list", users_path %></li>
                                 <li><%=  link_to "Enrollments", "#" %></li>
                                 <li><%=  link_to "Grading", "#" %></li>
-                                <li><%=  link_to "Add an admin", "#" %></li>
-                                <li><%=  link_to "Add an instructor", "#" %></li>
+                                <li><%=  link_to "Add an admin", adminsignup_path %></li>
+                                <li><%=  link_to "Add an instructor", instructorsignup_path %></li>
                                 <li><%=  link_to "Add a course", "#" %></li>
                             </ul>
                         </li>
-                    <% elsif @user.utype == "instructor" %>
+                    <% elsif current_user.utype == "instructor" %>
                     
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Actions <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><%=  link_to "My courses", "#", class: "active" %></li>
-                                <li><%=  link_to "Announcements", "#", class: "active" %></li>
+                                <li><%=  link_to "My courses", "#"%></li>
+                                <li><%=  link_to "Announcements", "#"%></li>
                                 <li><%=  link_to "Enrollments", "#" %></li>
                                 <li><%=  link_to "Grading", "#" %></li>
                             </ul>
                         </li>
-                    <% elsif @user.utype == "student" %>
+                    <% elsif current_user.utype == "student" %>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Actions <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><%=  link_to "My courses", "#", class: "active" %></li>
-                                <li><%=  link_to "Course catalogue", "#", class: "active" %></li>
+                                <li><%=  link_to "My courses", "#"%></li>
+                                <li><%=  link_to "Course catalogue", "#"%></li>
                             </ul>
                         </li>
                     <% end %>

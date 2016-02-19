@@ -1,7 +1,9 @@
 module UserSessionHelper
 
 	def log_in(user)
-		session[:user_id] = user.id
+		unless logged_in?
+			session[:user_id] = user.id
+		end
 	end
 
 	def current_user
