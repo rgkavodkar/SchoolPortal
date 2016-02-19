@@ -1,4 +1,4 @@
-<% provide(:title, 'Sign Up') %>
+<% provide(:title, 'Instructor sign Up') %>
 <div class = "center">
 	<h1>Sign up</h1>
 </div>
@@ -9,7 +9,7 @@
 <div class="row">
   	<div class="col-md-6 col-md-offset-3">
     	<%= render 'shared/error_messages' %>
-  		<p> <h3> Enter your details below </h3> </p>
+  		<p> <h3> Enter the instructor details </h3> </p>
     	<%= form_for(@user) do |f| %>
 
 			<%= f.label :name, "Name*" %>
@@ -29,16 +29,9 @@
 
 			<%= f.label :address, "Address" %>
 			<%= f.text_field :address, class:'form-control'  %>
-
-			<% if type_id == "1" %>
-				<%= f.hidden_field :utype, value: "admin" %>
-			<% elsif type_id == "2" %>
-				<%= f.hidden_field :utype, value: "instructor" %>
-			<% elsif type_id == "3" %>
-				<%= f.hidden_field :utype, value: "student" %>
-			<% end %>
-
-			<%= f.submit "Create my account", class: "btn btn-primary" %>
+			<%= f.hidden_field :utype, value: "instructor" %>
+				
+			<%= f.submit "Create instructor account", class: "btn btn-primary" %>
     	<% end %>
     	<!-- <br/> -->
     	<p></p>
