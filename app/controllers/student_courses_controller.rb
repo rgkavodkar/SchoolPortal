@@ -60,6 +60,14 @@ class StudentCoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def course_history_display
+   if logged_in?
+    @student_courses = StudentCourse.all.map{|course| course if (course.user_id == current_user.id)}
+  else
+    redirect_to login_path
+   end 
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.
