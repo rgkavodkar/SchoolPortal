@@ -1,26 +1,4 @@
-<table class="table">
-  <thead>
-    <th>Course</th>
-    <th>Description</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Intructor</th>
-    <th>Status</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.title%></td>
-        <td><%= course.description %></td>
-        <td><%= course.start_date %></td>
-        <td><%= course.end_date %></td>
-        <td><%= course.Instructor%></td>
-        <td><%= course.status%></td> 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
 
 <p id="notice"><%= notice %></p>
 
