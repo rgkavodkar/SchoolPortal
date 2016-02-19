@@ -1,7 +1,54 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# Create admins
+# Create the super admin
+User.create!(name: "Admin", 
+	email: "admin@sp.com", 
+	password: "password", 
+	utype: "admin",
+	password_confirmation: "password")
+
+# Create 5 more admins
+5.times do |n|
+	name = Faker::Name.name
+	email = "admin#{n+1}@sp.com"
+	address = Faker::Address.secondary_address + ", " + Faker::Address.street_address + ", " + Faker::Address.city
+	number = Faker::PhoneNumber.phone_number
+	User.create!(name: name, 
+		email: email, 
+		utype: "admin",
+		password: "password",
+		password_confirmation: "password", 
+		address: address, 
+		ph_number: number)
+end
+
+# Create instructors
+
+# Create 30 more admins
+30.times do |n|
+	name = Faker::Name.name
+	email = "ins#{n+1}@sp.com"
+	address = Faker::Address.secondary_address + ", " + Faker::Address.street_address + ", " + Faker::Address.city
+	number = Faker::PhoneNumber.phone_number
+	User.create!(name: name, 
+		email: email, 
+		utype: "instructor",
+		password: "password",
+		password_confirmation: "password", 
+		address: address, 
+		ph_number: number)
+end
+
+# Create 30 more admins
+300.times do |n|
+	name = Faker::Name.name
+	email = "stu#{n+1}@sp.com"
+	address = Faker::Address.secondary_address + ", " + Faker::Address.street_address + ", " + Faker::Address.city
+	number = Faker::PhoneNumber.phone_number
+	User.create!(name: name, 
+		email: email, 
+		utype: "student",
+		password: "password",
+		password_confirmation: "password", 
+		address: address, 
+		ph_number: number)
+end
