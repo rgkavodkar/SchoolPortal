@@ -1,4 +1,5 @@
 class StudentCoursesController < ApplicationController
+  before_action :logged_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_student_course, only: [:show, :edit, :update, :destroy]
 
   # GET /student_courses
@@ -79,4 +80,10 @@ class StudentCoursesController < ApplicationController
     def student_course_params
       params.require(:student_course).permit(:user_id, :course_id, :grade)
     end
+
+    def logged_user
+    unless logged_in?
+      redirect_to login_url
+    end
+  end
 end

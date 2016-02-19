@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :logged_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
@@ -24,15 +25,17 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    if current_user.utype == "admin"
+      @course = Course.new(course_params)
 
-    respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @course.save
+          format.html { redirect_to @course, notice: 'Course was successfully created.' }
+          format.json { render :show, status: :created, location: @course }
+        else
+          format.html { render :new }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -71,4 +74,10 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:title, :description, :start_date, :end_date, :user_id, :status)
     end
+
+    def logged_user
+    unless logged_in?
+      redirect_to login_url
+    end
+  end
 end
