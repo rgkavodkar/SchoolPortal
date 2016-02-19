@@ -12,8 +12,13 @@ Rails.application.routes.draw do
   get 'login' => 'user_session#new'
   post 'login' => 'user_session#create'
   delete 'logout' => 'user_session#destroy'
+  get 'student_courses/course_history_display' =>'student_courses#course_history_display'
   resources :users
   resources :courses
+  resources :student_courses
+  
+
+
 
   # This is easy, but for security reasons, dont use this
   # match ':controller(/:action(/:id))', :via => :get

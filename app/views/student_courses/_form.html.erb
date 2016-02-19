@@ -1,0 +1,44 @@
+<%= form_for(@student_course) do |f| %>
+  <% if @student_course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_course.errors.count, "error") %> prohibited this student_course from being saved:</h2>
+
+      <ul>
+      <% @student_course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= f.label :user_id %><br> 
+  <% users_array = User.all.map{|user|  [user.name,user.id] if user.utype =="student"} %>
+  <%= f.select(:user_id) do %>
+  <% users_array.each do |u| -%>
+    <% if u!=nil %>
+     <%=content_tag(:option, u.first, value: u.last) %>
+    <% end %>
+    <% end %>
+  <% end %>
+    
+  </div>
+  <div class="field">
+      <%= f.label :course_id %><br> 
+  <% courses_array = Course.all.map{|course|  [course.title,course.id] } %>
+  <%= f.select(:course_id) do %>
+  <% courses_array.each do |u| -%>
+    <% if u!=nil %>
+     <%=content_tag(:option, u.first, value: u.last) %>
+    <% end %>
+    <% end %>
+  <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :grade %><br>
+    <%= f.number_field :grade %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
