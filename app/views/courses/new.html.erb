@@ -1,5 +1,62 @@
-<h1>New Course</h1>
+<% provide(:title, 'Add a course') %>
+<div class = "center">
+	<h1>Add a course</h1>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', courses_path %>
+
+
+
+<!-- Get the user type -->
+<% type_id = params[:ut] %>
+
+<div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+    	<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :title, "Title" %>
+  <%= f.text_area :title, class:'form-control' %>
+
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description, class:'form-control' %>
+
+  <%= f.label :start_date, "start_date" %>
+  <%= f.datetime_select :start_date, class:'form-control' %>
+
+  <%= f.label :end_date, "End_date" %>
+  <%= f.datetime_select :end_date, class:'form-control' %>
+
+  <%= f.label :user_id, "instructor" %><br> 
+  <% users_array = User.all.map{|user|  [user.name,user.id] if user.utype =="instructor"} %>
+  <%= f.select(:user_id) do %>
+  <% users_array.each do |u| -%>
+    <% if u!=nil %>
+     <%=content_tag(:option, u.first, value: u.last) %>
+    <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.label :status, "Status (Enter 0 or 1)" %>
+  <%= f.text_field :status, class:'form-control' %>
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+				
+
+    	<!-- <br/> -->
+    
+  	</div>
+</div>

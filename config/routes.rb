@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'user_session#destroy'
   get 'course_history_display' =>'student_courses#course_history_display'
   get 'coursesall'=>'courses#index'
+  get 'coursecreate'=>'courses#new'
   resources :users
   resources :courses
   resources :student_courses
