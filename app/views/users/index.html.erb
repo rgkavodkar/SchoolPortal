@@ -1,26 +1,10 @@
-<!-- <ul class="nav nav-tabs">
-	<li class="active"><a>All users</a>
-		<% users_subset = @users %>
-	</li>
-	
-	<li><a>All admins</a>
-		<% users_subset = @users.all.select {|user| user.utype == "admin"} %>
-	</li>
-	
-	<li><a>All instructors</a>
-		<% users_subset = @users.all.select {|user| user.utype == "instructor"} %>
-	</li>
-	
-	<li><a>All students</a>
-		<% users_subset = @users.all.select {|user| user.utype == "student"} %>
-	</li>
-</ul> -->
-
 <table class="table">
 	<thead>
 		<th>Name</th>
 		<th>Email address</th>
 		<th>User type</th>
+<!-- 		<th>Phone number</th>
+		<th>Address</th> -->
 		<th></th>
 	</thead>
 	<tbody>
@@ -29,6 +13,8 @@
 				<td><%= user.name %></td>
 				<td><%= user.email %></td>
 				<td><%= user.utype %></td>
+<!-- 				<td><%= user.ph_number %></td>
+				<td><%= user.address %></td> -->
 				<td> <%= link_to 'View', user %> <%= link_to 'Delete', user, method: :delete, data: {confirm: 'Are you sure?'} %> </td>
 			</tr>
 		<% end %>
