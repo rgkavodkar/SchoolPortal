@@ -1,32 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Courses</h1>
+<h1>Listing All Courses</h1>
 
-<table>
+<table class="table">
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>User</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
+    <th>Course</th>
+    <th>Description</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Intructor</th>
+    <th>Status</th>
+    <th></th>
   </thead>
-
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.title %></td>
+        <td><%= course.title%></td>
         <td><%= course.description %></td>
         <td><%= course.start_date %></td>
         <td><%= course.end_date %></td>
-        <td><%= course.user.name %></td>
-        <td><%= course.status %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= course.user.name%></td>
+        <td><%= course.status%></td> 
       </tr>
     <% end %>
   </tbody>

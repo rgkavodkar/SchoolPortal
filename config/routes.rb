@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'login' => 'user_session#new'
   post 'login' => 'user_session#create'
   delete 'logout' => 'user_session#destroy'
-  get 'student_courses/course_history_display' =>'student_courses#course_history_display'
+  get 'course_history_display' =>'student_courses#course_history_display'
+  get 'coursesall'=>'courses#index'
   resources :users
   resources :courses
   resources :student_courses
