@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # URLs for the rest of the static pages
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
+  get 'unauthorized' => 'static_pages#unauthorized'
   get 'signup' => 'users#newstudent'
   get 'adminsignup' => 'users#newadmin'
   get 'instructorsignup' => 'users#newinstructor'

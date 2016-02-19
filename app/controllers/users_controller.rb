@@ -7,7 +7,15 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = User.all
+		if current_user.utype == "admin"
+			@users = User.all
+		else 
+			# Need to change it to an unauthorized page
+			redirect_to unauthorized_url
+			# respond_to do |format|
+			# 	format.html {redirect_to :controller => 'static_pages', :action => 'unauthorized'}
+			# end
+		end
 	end
 
 	def newstudent
