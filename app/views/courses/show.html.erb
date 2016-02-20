@@ -5,7 +5,7 @@
       <% if ( current_user.utype =="admin" ||  current_user.utype =="instructor" )%>
       <h5> <%=  link_to "List of Enrolled students", "#" %> || <%=  link_to "List of Pending students", "#" %><h5>
       <% elsif(current_user.utype=="student") %>
-         <%=  link_to "Enroll Me", "#" %>
+         <%=  link_to "Enroll Me",:controller=>:courses, :action=>:enroll, :id=>@course.id%>
       <% end %>
       <table class="table">
       <tr>

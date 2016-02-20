@@ -3,7 +3,7 @@ class CreateStudentCourses < ActiveRecord::Migration
     create_table :student_courses do |t|
       t.references :user, index: true, foreign_key: true
       t.references :course, index: true, foreign_key: true
-      t.integer :grade
+      t.text :grade
  
       t.timestamps null: false
     end

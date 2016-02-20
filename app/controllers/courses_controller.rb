@@ -70,6 +70,26 @@ class CoursesController < ApplicationController
     end
   end
 
+  # POST /student_courses
+  # POST /student_courses.json
+  def enroll
+
+    @student_course = StudentCourse.new
+    @student_course.user_id = current_user.id
+    @student_course.course_id = params[:id]
+    @student_course.grade= 'F'
+    @student_course.status = 'pending'
+    respond_to do |format| 
+      if @student_course.save
+        format.html { redirect_to about_url, notice: 'Student Course was successfully created.' }
+        format.json { render :show, status: :created, location: @student_course }
+      else
+        format.html { render :index}
+        format.json { render json: @student_course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -80,6 +100,8 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:title, :description, :start_date, :end_date, :user_id, :status)
     end
+
+    
 
     def logged_user
     unless logged_in?

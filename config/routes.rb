@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'
   patch 'courseedit'=>'courses#edit'
+  post 'coursesall'=>'courses#index'
+  get 'courses/enroll/:id' => 'courses#enroll'
   resources :users
   resources :courses
   resources :student_courses
