@@ -6,6 +6,12 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+
+    if params[:search]
+      @courses = Course.search(params[:search]).order("created_at DESC")
+    else
+       @courses = Course.all.order('created_at DESC')
+    end
   end
 
   # GET /courses/1
@@ -95,6 +101,14 @@ class CoursesController < ApplicationController
       end
     end
   end
+
+  def coursehistorydisplayinstructor
+   if logged_in?
+    @courses = Course.all.map{|course| course if (course.user_id == current_user.id)}
+  else
+    redirect_to login_path
+   end 
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

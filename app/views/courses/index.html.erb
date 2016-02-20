@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing All Courses</h1>
+<%= form_tag(courses_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
+<%= submit_tag "Search" %>
+<% end %>
 
 <table class="table">
   <thead>
@@ -22,7 +26,9 @@
         <td><%= course.user.name%></td>
         <td><%= course.status%></td> 
         <td><%= link_to 'Show', course %></td>
+        <% if ( current_user.utype =="admin")%>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
 
     <% end %>

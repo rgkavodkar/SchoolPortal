@@ -19,12 +19,14 @@ Rails.application.routes.draw do
   
   get 'course_history_display' =>'student_courses#course_history_display'
   get 'enrolledshow'=>'student_courses#enrolledshow'
-  
+  get 'pendingshow'=>'student_courses#pendingshow'
+
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'
   patch 'courseedit'=>'courses#edit'
   get 'courses/enroll/:id' => 'courses#enroll'
-  
+  get 'coursehistorydisplayinstructor'=>'courses#coursehistorydisplayinstructor'
+
   resources :users
   resources :courses
   resources :student_courses

@@ -3,7 +3,7 @@
 
       <h3> Course Details </h3>
       <% if ( current_user.utype =="admin" ||  current_user.utype =="instructor" )%>
-      <h5> <%=  link_to "List of Enrolled students",  controller: "student_courses", action: "enrolledshow", id:@course %> || <%=  link_to "List of Pending students", "#" %><h5>
+      <h5> <%=  link_to "List of Enrolled students",  controller: "student_courses", action: "enrolledshow", id:@course %> || <%=  link_to "List of Pending students" ,controller: "student_courses",action: "pendingshow", id:@course %><h5>
       <% elsif(current_user.utype=="student") %>
          <%=  link_to "Enroll Me",:controller=>:courses, :action=>:enroll, :id=>@course.id%>
       <% end %>
@@ -34,8 +34,9 @@
       </tr>      
     </table>
     <br/>
-
-      <%= link_to 'Edit', edit_course_path(@course) %> |
+      <% if ( current_user.utype =="admin")%>
+      <%= link_to 'Edit', edit_course_path(@course) %> 
+     <% end %> 
 <%= link_to 'Back', courses_path %>
     
   </div>

@@ -13,5 +13,9 @@ class Course < ActiveRecord::Base
   		errors.add(:start_date,"Start date should be before end date")
   	end
   end
-
+  
+  def self.search(search)
+     where("title LIKE ?", "%#{search}%") 
+     where("description LIKE ?", "%#{search}%")
+  end
 end

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Your Courses</h1>
+
+<table class="table">
+  <thead>
+    <th>Course</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+    <% if  course !=nil %>
+      <tr>
+        <td><%= course.title %></td>
+        <td><%= course.description %></td>
+        <td><%= course.status %></td>
+        <td><%= link_to 'Show', course %></td>        
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
