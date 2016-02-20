@@ -4,7 +4,7 @@ class CreateStudentCourses < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.references :course, index: true, foreign_key: true
       t.integer :grade
-
+ 
       t.timestamps null: false
     end
   end

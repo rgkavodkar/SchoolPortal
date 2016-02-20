@@ -41,6 +41,8 @@ class CoursesController < ApplicationController
           format.json { render json: @course.errors, status: :unprocessable_entity }
         end
       end
+    else
+      redirect_to unauthorized_url
     end
   end
 
