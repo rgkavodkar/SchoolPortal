@@ -63,10 +63,16 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
+    student_count = StudentCourse.where(course_id:@course.id, status:"enrolled").count
+    if student_count > 0
+      flash[:danger] = "Cannot delete a course with enrolled students"
+      redirect_to @course
+    else      
+      @course.destroy
+      respond_to do |format|
+        format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
