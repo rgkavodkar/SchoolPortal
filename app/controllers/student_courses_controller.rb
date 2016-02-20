@@ -61,7 +61,11 @@ class StudentCoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
+  def enrolledshow
+      @student_courses = StudentCourse.all.map{|course| course if (course.course_id == params[:id].to_i)}
+  end
+
   def course_history_display
    if logged_in?
     @student_courses = StudentCourse.all.map{|course| course if (course.user_id == current_user.id)}

@@ -23,7 +23,7 @@ end
 
 # Create instructors
 
-# Create 30 more admins
+# Create 30 more instructors
 30.times do |n|
 	name = Faker::Name.name
 	email = "ins#{n+1}@sp.com"
@@ -38,7 +38,7 @@ end
 		ph_number: number)
 end
 
-# Create 30 more admins
+# Create 300 more students
 300.times do |n|
 	name = Faker::Name.name
 	email = "stu#{n+1}@sp.com"

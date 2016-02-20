@@ -81,7 +81,7 @@ class CoursesController < ApplicationController
     @student_course.status = 'pending'
     respond_to do |format| 
       if @student_course.save
-        format.html { redirect_to about_url, notice: 'Student Course was successfully created.' }
+        format.html { redirect_to courses_url, notice: 'Student Course was successfully created.' }
         format.json { render :show, status: :created, location: @student_course }
       else
         format.html { render :index}
