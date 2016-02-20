@@ -57,7 +57,7 @@ class StudentCoursesController < ApplicationController
   def destroy
     @student_course.destroy
     respond_to do |format|
-      format.html { redirect_to student_courses_url, notice: 'Student course was successfully destroyed.' }
+      format.html { redirect_to course_history_display_url, notice: 'Student course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,7 +70,7 @@ class StudentCoursesController < ApplicationController
       @student_courses = StudentCourse.all.map{|course| course if ((course.course_id == params[:id].to_i) && (course.status=="pending"))}
   end
 
-  def complete
+  def enrollpending
       StudentCourse.update_all(["status=?", "approved"], :id => params[:student_course_ids])
   end
 

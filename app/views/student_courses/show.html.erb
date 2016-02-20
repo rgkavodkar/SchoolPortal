@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @student_course.user.name %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @student_course.course.title %>
-</p>
-
-<p>
-  <strong>Grade:</strong>
-  <%= @student_course.grade %>
-</p>
-
-<%= link_to 'Edit', edit_student_course_path(@student_course) %> |
+      <table class="table">
+      <tr>
+        <td>Course:</td>
+        <td><%= @student_course.course.title %></td>
+      </tr>
+      <tr>
+        <td>Course Instructor:</td>
+        <td><%= @student_course.course.user.name %></td>
+      </tr>
+      <tr>
+        <td>Status :</td>
+        <td><%= @student_course.course.status %></td>
+      </tr>
+      <tr>
+      <tr>
+        <td>Grade:</td>
+        <td><%= @student_course.grade %></td>
+      </tr>      
+    </table>
+    <% if @student_course.course.status ==0 %>
+    <%= link_to 'Drop the course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <% end %>
 <%= link_to 'Back', student_courses_path %>
