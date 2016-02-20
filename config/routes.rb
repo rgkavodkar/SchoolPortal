@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'
   patch 'courseedit'=>'courses#edit'
+  get 'enrolledshow'=>'student_courses#enrolledshow'
   resources :users
   resources :courses
   resources :student_courses

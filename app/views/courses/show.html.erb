@@ -3,7 +3,7 @@
 
       <h3> Course Details </h3>
       <% if ( current_user.utype =="admin" ||  current_user.utype =="instructor" )%>
-      <h5> <%=  link_to "List of Enrolled students", "#" %> || <%=  link_to "List of Pending students", "#" %><h5>
+      <h5> <%=  link_to "List of Enrolled students",  controller: "student_courses", action: "enrolledshow", id:@course %> || <%=  link_to "List of Pending students", "#" %><h5>
       <% elsif(current_user.utype=="student") %>
          <%=  link_to "Enroll Me", "#" %>
       <% end %>
