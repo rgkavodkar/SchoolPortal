@@ -14,8 +14,11 @@ class Course < ActiveRecord::Base
   	end
   end
   
-  def self.search(search)
-     where("title LIKE ?", "%#{search}%") 
-     where("description LIKE ?", "%#{search}%")
+  def self.search(search,searchby)
+    if searchby =="instructor"
+      searchby ="user_id"
+    end
+     where("#{searchby} LIKE ?", "%#{search}%") 
+     # where("description LIKE ?", "%#{search}%")
   end
 end
