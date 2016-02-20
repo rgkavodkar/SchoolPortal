@@ -5,15 +5,19 @@
 <table class="table">
   <thead>
     <th>Student</th>
-    <th>Status</th>
+    <th>Course</th>
     <th></th>
   </thead>
+
   <tbody>
+
+   
     <% @student_courses.each do |student_course| %>
     <% if  student_course !=nil %>
       <tr>
         <td><%= student_course.user.name %></td>
-        <td><%= student_course.status %></td>
+        <td><%= student_course.course.title %></td>
+        <td><%= check_box_tag "student_course_ids[]", student_course.id %></td>
       </tr>
     <% end %>
     <% end %>
@@ -21,4 +25,5 @@
 </table>
 
 
-<br>
+
+

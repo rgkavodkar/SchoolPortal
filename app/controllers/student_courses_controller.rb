@@ -69,6 +69,16 @@ class StudentCoursesController < ApplicationController
   def pendingshow
       @student_courses = StudentCourse.all.map{|course| course if ((course.course_id == params[:id].to_i) && (course.status=="pending"))}
   end
+
+  def complete
+      StudentCourse.update_all(["status=?", "approved"], :id => params[:student_course_ids])
+  end
+
+
+
+  
+
+
   def course_history_display
    if logged_in?
     @student_courses = StudentCourse.all.map{|course| course if (course.user_id == current_user.id)}
