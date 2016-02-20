@@ -20,7 +20,12 @@
         <td><%= course.start_date %></td>
         <td><%= course.end_date %></td>
         <td><%= course.user.name%></td>
-        <td><%= course.status%></td>
+        <td><% if course.status == 0%>
+              Inactive
+            <%else%>
+              Active
+            <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>

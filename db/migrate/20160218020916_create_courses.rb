@@ -3,10 +3,10 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.text :title
       t.text :description
-      t.datetime :start_date
-      t.datetime :end_date
+      t.date :start_date
+      t.date :end_date
       t.references :user, index: true, foreign_key: true
-      t.integer :status
+      t.text :status
 
       t.timestamps null: false
     end
