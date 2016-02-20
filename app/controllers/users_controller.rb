@@ -64,10 +64,6 @@ class UsersController < ApplicationController
 	def destroy
 		User.find(params[:id]).destroy
 		redirect_to users_url
-		# respond_to do |format|
-		# 	format.html {redirect_to users}
-		# 	format.json {head :no_content}
-		# end
 	end
 
 	private

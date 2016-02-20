@@ -20,13 +20,11 @@
         <td><%= course.start_date %></td>
         <td><%= course.end_date %></td>
         <td><%= course.user.name%></td>
-        <td><% if course.status == 0%>
-              Inactive
-            <%else%>
-              Active
-            <%end%>
-        </td>
+        <td><%= course.status%></td> 
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
