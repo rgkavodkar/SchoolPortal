@@ -4,60 +4,55 @@
 </div>
 
 
-<!-- Get the user type -->
-<% type_id = params[:ut] %>
-
 <div class="row">
   	<div class="col-md-6 col-md-offset-3">
+        <% if @course.errors.any? %>
+            <div id="error_explanation">
+                <div class="alert alert-danger">
+                    The form contains <%= pluralize(@course.errors.count, "error") %>.
+                    <ul>
+                        <% @course.errors.full_messages.each do |error_msg| %>
+                            <li><%= error_msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
+
     	<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
-      <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+            <%= f.label :title, "Title" %>
+            <%= f.text_field :title, class:'form-control' %>
 
-  <%= f.label :title, "Title" %>
-  <%= f.text_area :title, class:'form-control' %>
+            <%= f.label :description, "Description" %>
+            <%= f.text_area :description, class:'form-control' %>
 
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description, class:'form-control' %>
+            <%= f.label :start_date, "Start date" %>
+            <%= f.date_select :start_date, { :order => [:year, :month, :day], :prompt => { year: 'Select year', day:'Select day', month:'Select month' }}, {class: "form-control"}  %>
 
-  <%= f.label :start_date, "start_date" %>
-  <%= f.date_select :start_date, class:'form-control' %>
+            <%= f.label :end_date, "End date" %>
+            <%= f.date_select :end_date, { :order => [:year, :month, :day], :prompt => { year: 'Select year', day:'Select day', month:'Select month' }}, {class: "form-control"}  %>
 
-  <%= f.label :end_date, "End_date" %>
-  <%= f.date_select :end_date, class:'form-control' %>
+            <%= f.label :user_id, "Instructor" %><br> 
+            <% users_array = User.all.map{|user| [user.name, user.id] if user.utype =="instructor"} %>            
+            
+            <%= f.select(:user_id, {}, {}, {class:'form-control'}) do %>
+                <% users_array.each do |user| %>
+                    <% if user != nil %>
+                        <%= content_tag(:option, user.first, value: user.last) %>
+                    <% end %>
+                <% end %>
+            <% end %>
 
-  <%= f.label :user_id, "instructor" %><br> 
-  <% users_array = User.all.map{|user|  [user.name,user.id] if user.utype =="instructor"} %>
-  <%= f.select(:user_id) do %>
-  <% users_array.each do |u| -%>
-    <% if u!=nil %>
-     <%=content_tag(:option, u.first, value: u.last) %>
-    <% end %>
-    <% end %>
-  <% end %>
+            <%= f.label :status, "Status" %><br> 
 
-  <%= f.label :status, "Status" %><br> 
-  
-  <%= f.select(:status) do %>
-    <%=content_tag(:option, "Inactive", value: "Inactive") %>
-    <%=content_tag(:option, "Active", value: "Active") %>
-  <% end %>
- 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-				
-
-    	<!-- <br/> -->
+            <%= f.select(:status, {}, {}, {class:'form-control'}) do %>
+                <%=content_tag(:option, "Inactive", value: "Inactive") %>
+                <%=content_tag(:option, "Active", value: "Active") %>
+            <% end %> 
+             
+            <%= f.submit "Create course", class: "btn btn-primary" %>
+        <% end %>
     
   	</div>
 </div>
