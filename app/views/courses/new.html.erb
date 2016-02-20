@@ -29,10 +29,10 @@
   <%= f.text_area :description, class:'form-control' %>
 
   <%= f.label :start_date, "start_date" %>
-  <%= f.datetime_select :start_date, class:'form-control' %>
+  <%= f.date_select :start_date, class:'form-control' %>
 
   <%= f.label :end_date, "End_date" %>
-  <%= f.datetime_select :end_date, class:'form-control' %>
+  <%= f.date_select :end_date, class:'form-control' %>
 
   <%= f.label :user_id, "instructor" %><br> 
   <% users_array = User.all.map{|user|  [user.name,user.id] if user.utype =="instructor"} %>
@@ -44,8 +44,12 @@
     <% end %>
   <% end %>
 
-  <%= f.label :status, "Status (Enter 0 or 1)" %>
-  <%= f.text_field :status, class:'form-control' %>
+  <%= f.label :status, "Status" %><br> 
+  
+  <%= f.select(:status) do %>
+    <%=content_tag(:option, "Inactive", value: "Inactive") %>
+    <%=content_tag(:option, "Active", value: "Active") %>
+  <% end %>
  
   <div class="actions">
     <%= f.submit %>

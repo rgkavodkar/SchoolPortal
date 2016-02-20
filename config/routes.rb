@@ -18,10 +18,12 @@ Rails.application.routes.draw do
   delete 'logout' => 'user_session#destroy'
   
   get 'course_history_display' =>'student_courses#course_history_display'
+  get 'enrolledshow'=>'student_courses#enrolledshow'
   
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'
-  
+  patch 'courseedit'=>'courses#edit'
+
   resources :users
   resources :courses
   resources :student_courses

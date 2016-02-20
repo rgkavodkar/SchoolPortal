@@ -21,7 +21,10 @@
         <td><%= course.end_date %></td>
         <td><%= course.user.name%></td>
         <td><%= course.status%></td> 
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Enrolled students</h1>
+
+<table class="table">
+  <thead>
+    <th>Course</th>
+    <th>Grade</th>
+    <th>Status</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @student_courses.each do |student_course| %>
+    <% if  student_course !=nil %>
+      <tr>
+        <td><%= student_course.course.title %></td>
+        <td><%= student_course.grade %></td>
+        <td><%= student_course.status %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>

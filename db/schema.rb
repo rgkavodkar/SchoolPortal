@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20160219025130) do
   create_table "courses", force: :cascade do |t|
     t.text     "title"
     t.text     "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date     "start_date"
+    t.date     "end_date"
     t.integer  "user_id"
-    t.integer  "status"
+    t.text     "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

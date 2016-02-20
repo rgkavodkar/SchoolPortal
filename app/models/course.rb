@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   validates :start_date, presence: true 
   validates :end_date, presence: true 
   validates :user, presence:true
-  validates :status, presence:true
+  validates :status, presence:true, inclusion: {in: %w(Inactive Active), message: "%{value} is not a valid status"}
   validate :validate_start_before_end
 
   def validate_start_before_end 
