@@ -17,7 +17,7 @@
         <td><%= @student_course.grade %></td>
       </tr>      
     </table>
-    <% if @student_course.course.status ==0 %>
+    <% if @student_course.status == "enrolled" %>
     <%= link_to 'Drop the course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
     <% end %>
 <%= link_to 'Back', student_courses_path %>
