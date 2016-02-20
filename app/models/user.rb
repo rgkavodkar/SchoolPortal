@@ -5,4 +5,14 @@ class User < ActiveRecord::Base
 	validates :utype, inclusion: {in: %w(admin student instructor), message: "%{value} is not a valid user"}
 	has_secure_password
 	validates :password, presence: true, length: {minimum: 8}
+
+
+	def safe_destroy
+		return false if superadmin?
+		destroy
+	end
+
+	def superadmin?
+		email == "admin@sp.com"
+	end
 end

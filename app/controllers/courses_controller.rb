@@ -17,6 +17,8 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    # @course = Course.find(params[:id])
+    @course_announcements = Announcement.where(course_id:@course.id)
   end
 
   # GET /courses/new

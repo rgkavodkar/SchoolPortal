@@ -69,8 +69,12 @@ class UsersController < ApplicationController
 			flash[:danger] = "Cannot delete an instructor associated with a course"
 			redirect_to user
 		else 
-			user.destroy
-			redirect_to users_url
+			if user.safe_destroy
+				redirect_to users_url
+			else
+				flash[:danger] = "Cannot delete the super admin"
+				redirect_to user
+			end
 		end
 	end
 

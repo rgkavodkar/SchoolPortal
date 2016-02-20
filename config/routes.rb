@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'announcements/new'
+  get 'announcements/index'
+
   # The root page of the application
   root 'static_pages#home'
 
@@ -7,6 +10,7 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   get 'unauthorized' => 'static_pages#unauthorized'
+  get 'nocourses' => 'static_pages#no_courses'
 
   get 'signup' => 'users#newstudent'
   get 'history' => "users#history"
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
   resources :users
   resources :courses
   resources :student_courses
+  resources :announcements
   
 
 

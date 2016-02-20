@@ -1,0 +1,29 @@
+<% provide(:title, 'New announcement') %>
+<div class = "center">
+	<h1>New announcement</h1>
+</div>
+
+
+<div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+
+    	<%= form_for(@announcement) do |f| %>
+
+			<%= f.label :title, "Title*" %>
+			<%= f.text_field :title, class:'form-control' %>
+
+			<%= f.label :content, "Content*" %>
+			<%= f.text_area :content, class:'form-control' %>
+
+			<%= f.select(:course_id, {}, {}, {class:'form-control'}) do %>
+                <% @relevant_courses.each do |course| %>
+                    <% if course != nil %>
+                        <%= content_tag(:option, course.first, value: course.last) %>
+                    <% end %>
+                <% end %>
+            <% end %>
+
+			<%= f.submit "Create announcement", class: "btn btn-primary" %>
+    	<% end %>
+  	</div>
+</div>

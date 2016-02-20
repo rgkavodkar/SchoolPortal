@@ -11,4 +11,6 @@ class StaticPagesController < ApplicationController
   def unauthorized
   end
   
+  def no_courses
+  end
 end
