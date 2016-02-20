@@ -32,7 +32,7 @@
   <%= f.text_area :description, class:'form-control' %>
 
   <%= f.label :start_date, "start_date" %>
-  <%= f.datetime_select :start_date, class:'form-control' %>
+  <span class="datetime"><%= f.datetime_select :start_date, class:'form-control' %><span/>
 
   <%= f.label :end_date, "End_date" %>
   <%= f.datetime_select :end_date, class:'form-control' %>
