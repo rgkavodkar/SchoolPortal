@@ -71,8 +71,13 @@ class StudentCoursesController < ApplicationController
   end
 
   def complete
+    if params[:Enrollment]
       StudentCourse.where("id=?",params[:student_course_ids]).update_all(["status=?", "enrolled"])
       redirect_to coursehistorydisplayinstructor_url
+    else
+      StudentCourse.where("id=?",params[:student_course_ids]).delete_all
+      redirect_to coursehistorydisplayinstructor_url
+    end  
   end
 
 
