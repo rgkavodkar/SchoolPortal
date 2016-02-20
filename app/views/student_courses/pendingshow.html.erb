@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Students waiting for approval</h1>
-
+<%= form_tag( { :action => :complete, }, { :method => :put }) %>
 <table class="table">
   <thead>
     <th>Student</th>
@@ -21,8 +21,10 @@
       </tr>
     <% end %>
     <% end %>
+    <%= submit_tag "enroll"%>
   </tbody>
 </table>
+<%= form_tag %>
 
 
 

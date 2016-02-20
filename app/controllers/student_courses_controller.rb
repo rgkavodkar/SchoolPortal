@@ -71,7 +71,8 @@ class StudentCoursesController < ApplicationController
   end
 
   def complete
-      StudentCourse.update_all(["status=?", "approved"], :id => params[:student_course_ids])
+      StudentCourse.where("id=?",params[:student_course_ids]).update_all(["status=?", "enrolled"])
+      redirect_to coursehistorydisplayinstructor_url
   end
 
 
