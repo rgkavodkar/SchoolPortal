@@ -4,9 +4,6 @@
 </div>
 
 
-
-
-
 <!-- Get the user type -->
 <% type_id = params[:ut] %>
 
@@ -32,7 +29,7 @@
   <%= f.text_area :description, class:'form-control' %>
 
   <%= f.label :start_date, "start_date" %>
-  <span class="datetime"><%= f.datetime_select :start_date, class:'form-control' %><span/>
+  <%= f.datetime_select :start_date, class:'form-control' %>
 
   <%= f.label :end_date, "End_date" %>
   <%= f.datetime_select :end_date, class:'form-control' %>

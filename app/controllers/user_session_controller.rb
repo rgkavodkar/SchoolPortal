@@ -6,6 +6,7 @@ class UserSessionController < ApplicationController
 	def create
 		user = User.find_by(email: params[:user_session][:email].downcase)
 		if user && user.authenticate(params[:user_session][:password])
+			flash[:success] = 'Welcome'
 			log_in user
 			redirect_to user
 		else

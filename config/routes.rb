@@ -7,15 +7,21 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   get 'unauthorized' => 'static_pages#unauthorized'
+
   get 'signup' => 'users#newstudent'
-  get 'adminsignup' => 'users#newadmin'
+  get 'history' => "users#history"
   get 'instructorsignup' => 'users#newinstructor'
+  get 'adminsignup' => 'users#newadmin'
+  
   get 'login' => 'user_session#new'
   post 'login' => 'user_session#create'
   delete 'logout' => 'user_session#destroy'
+  
   get 'course_history_display' =>'student_courses#course_history_display'
+  
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'
+  
   resources :users
   resources :courses
   resources :student_courses
