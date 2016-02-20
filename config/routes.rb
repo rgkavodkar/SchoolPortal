@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'coursecreate'=>'courses#new'
   patch 'courseedit'=>'courses#edit'
   get 'courses/enroll/:id' => 'courses#enroll'
+  get 'coursehistorydisplayinstructor'=>'courses#coursehistorydisplayinstructor'
   resources :users
   resources :courses
   resources :student_courses

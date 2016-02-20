@@ -90,6 +90,14 @@ class CoursesController < ApplicationController
     end
   end
 
+  def coursehistorydisplayinstructor
+   if logged_in?
+    @courses = Course.all.map{|course| course if (course.user_id == current_user.id)}
+  else
+    redirect_to login_path
+   end 
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course

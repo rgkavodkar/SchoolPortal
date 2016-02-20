@@ -34,8 +34,9 @@
       </tr>      
     </table>
     <br/>
-
-      <%= link_to 'Edit', edit_course_path(@course) %> |
+      <% if ( current_user.utype =="admin")%>
+      <%= link_to 'Edit', edit_course_path(@course) %> 
+     <% end %> 
 <%= link_to 'Back', courses_path %>
     
   </div>
