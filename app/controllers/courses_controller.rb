@@ -17,6 +17,8 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    # @course = Course.find(params[:id])
+    @course_announcements = Announcement.where(course_id:@course.id)
   end
 
   # GET /courses/new
@@ -86,20 +88,24 @@ class CoursesController < ApplicationController
   # POST /student_courses.json
   def enroll
 
-    @student_course = StudentCourse.new
-    @student_course.user_id = current_user.id
-    @student_course.course_id = params[:id]
-    @student_course.grade= 'F'
-    @student_course.status = 'pending'
-    respond_to do |format| 
-      if @student_course.save
-        format.html { redirect_to courses_url, notice: 'Student Course was successfully created.' }
-        format.json { render :show, status: :created, location: @student_course }
-      else
-        format.html { render :index}
-        format.json { render json: @student_course.errors, status: :unprocessable_entity }
-      end
-    end
+    if (StudentCourse.where("user_id=? AND course_id=?",current_user.id,params[:id]).empty?)
+      @student_course = StudentCourse.new
+      @student_course.user_id = current_user.id
+      @student_course.course_id = params[:id]
+      @student_course.grade= 'F'
+      @student_course.status = 'pending'
+      respond_to do |format| 
+        if @student_course.save
+          format.html { redirect_to courses_url, notice: 'Student successfully enrolled to course.' }
+          format.json { render :show, status: :created, location: @student_course }
+        else
+          format.html { render :index}
+          format.json { render json: @student_course.errors, status: :unprocessable_entity }
+        end
+      end 
+    else
+      redirect_to courses_url, notice: 'Student already enrolled for course.'  
+    end  
   end
 
   def coursehistorydisplayinstructor

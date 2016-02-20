@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
   belongs_to :user
+  has_many :announcement
   validates :title, presence: true, length: {maximum: 100}
   validates :description, presence: true, length: {maximum: 1000}
   validates :start_date, presence: true 
