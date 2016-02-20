@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'course_history_display' =>'student_courses#course_history_display'
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'
+  patch 'courseedit'=>'courses#edit'
   resources :users
   resources :courses
   resources :student_courses
