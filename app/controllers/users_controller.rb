@@ -64,8 +64,9 @@ class UsersController < ApplicationController
 
 	def destroy
 		user = User.find(params[:id])
-		if user.utype == "instructor" && 
-			flash[:danger] = "Cannot delete an instructor who is taking a course(s)"
+		course_count = Course.where(user_id:user.id).count
+		if course_count > 0
+			flash[:danger] = "Cannot delete an instructor associated with a course"
 			redirect_to user
 		else 
 			user.destroy
@@ -82,9 +83,5 @@ class UsersController < ApplicationController
 		unless logged_in?
 			redirect_to login_url
 		end
-	end
-
-	def check_deletable_inst(user)
-		deletable_inst(user)
 	end
 end
