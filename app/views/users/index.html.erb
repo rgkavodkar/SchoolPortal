@@ -1,7 +1,9 @@
-<%= link_to "All users", users_path  %> | 
-<%= link_to "Admins", users_path(subset:"admins")   %> | 
-<%= link_to "Instructors", users_path(subset:"instructors")   %> | 
-<%= link_to "Students", users_path(subset:"students")   %>
+<% provide(:title, 'View users') %>
+
+<%= link_to "All", users_pathv%> | 
+<%= link_to "Admins", users_path(subset:"admins") %> | 
+<%= link_to "Instructors", users_path(subset:"instructors") %> | 
+<%= link_to "Students", users_path(subset:"students") %>
 
 <h3>Viewing all users </h3>
 <table class="table">

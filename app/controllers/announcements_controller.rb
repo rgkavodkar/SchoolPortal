@@ -27,6 +27,7 @@ class AnnouncementsController < ApplicationController
   	end
 
   	def index
+  		@announcements = Announcement.all
   		# course_id = User.find(params[:course_id])
   		# @course_announcements = Announcement.where(course_id: course_id)
   	end
