@@ -56,7 +56,7 @@ end
 
 # Add 15 past courses
 15.times do |n|
-	title = Faker::Lorem.sentence(word_count = 5)
+	title = "Past course#{n+1}"
 	description = Faker::Lorem.paragraph(sentence_count = 6)
 	start = Date.new(2015, 8, 15)
 	end_ = Date.new(2015, 12, 15)
@@ -86,7 +86,7 @@ end
 
 # Create current courses
 15.times do |n|
-	title = Faker::Lorem.sentence(word_count = 5)
+	title = "Current course#{n+1}"
 	description = Faker::Lorem.paragraph(sentence_count = 6)
 	start = Date.today
 	end_ = Date.today
@@ -117,7 +117,7 @@ end
 	num_announcements = rand(1..5)
 
 	num_announcements.times do |i|
-		Announcement.create!(title: Faker::Lorem.sentence(word_count = 4),
+		Announcement.create!(title: "Announcement #{n+1}",
 		content: Faker::Lorem.paragraphs(paragraph_count = rand(1..3)).join,
 		course_id: n + 16)
 	end

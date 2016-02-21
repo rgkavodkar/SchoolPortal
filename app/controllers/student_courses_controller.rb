@@ -54,7 +54,7 @@ class StudentCoursesController < ApplicationController
         end
     end
 
-    # DELETE /student_courses/1
+    DELETE /student_courses/1
     # DELETE /student_courses/1.json
     def destroy
         @student_course.destroy
