@@ -70,8 +70,14 @@ class StudentCoursesController < ApplicationController
       @student_courses = StudentCourse.all.map{|course| course if ((course.course_id == params[:id].to_i) && (course.status=="pending"))}
   end
 
-  def enrollpending
-      StudentCourse.update_all(["status=?", "approved"], :id => params[:student_course_ids])
+  def complete
+    if params[:Enrollment]
+      StudentCourse.where("id=?",params[:student_course_ids]).update_all(["status=?", "enrolled"])
+      redirect_to coursehistorydisplayinstructor_url
+    else
+      StudentCourse.where("id=?",params[:student_course_ids]).delete_all
+      redirect_to coursehistorydisplayinstructor_url
+    end  
   end
 
 
