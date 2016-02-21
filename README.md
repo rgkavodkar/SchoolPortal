@@ -14,7 +14,9 @@ password: password
 
 username: admin_@sp.com 		[replace _ with a number in the range 1-5]
 
+
 Example: admin1@sp.com
+
 password: password
 
 
@@ -23,7 +25,9 @@ password: password
 
 username: ins_@sp.com 		[replace _ with a number in the range 1-30]
 
+
 Example: ins2@sp.com
+
 password: password
 
 
@@ -32,7 +36,9 @@ password: password
 
 username: stu_@sp.com 		[replace _ with a number in the range 1-300]
 
+
 Example: stu3@sp.com
+
 password: password
 
 
@@ -48,5 +54,7 @@ NOTE :: Kindly contact us :  in case of any difficulty , before submitting a bla
 
 
 Rakesh Kavodkar : rgopalk@ncsu.edu
+
 Sneha Shah 		: smshah4@ncsu.edu
+
 Tanay Pande 	: tapnde@ncsu.edu
