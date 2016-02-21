@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, current_user.name + '\'s courses') %>
+<%= link_to "All", course_history_display_path%> | 
+<%= link_to "Pending", course_history_display_path(subset:"pending") %> | 
+<%= link_to "Enrolled", course_history_display_path(subset:"enrolled") %> | 
+<%= link_to "Completed", course_history_display_path(subset:"completed") %>
+
 
 <h1>Listing Your Courses</h1>
 

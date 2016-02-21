@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   delete 'logout' => 'user_session#destroy'
   
   get 'course_history_display' =>'student_courses#course_history_display'
+  get 'get_student_history' =>'student_courses#get_student_history'
   get 'enrolledshow'=>'student_courses#enrolledshow'
+  delete 'enrolledshow'=>'student_courses#enrolledshow'
   get 'pendingshow'=>'student_courses#pendingshow'
   put 'complete'=> 'student_courses#complete'
 
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   patch 'courseedit'=>'courses#edit'
   get 'courses/enroll/:id' => 'courses#enroll'
   get 'coursehistorydisplayinstructor'=>'courses#coursehistorydisplayinstructor'
+  get 'get_instructor_history'=>'courses#get_instructor_history'
 
   resources :users
   resources :courses

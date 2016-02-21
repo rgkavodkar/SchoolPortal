@@ -1,4 +1,6 @@
+
       <table class="table">
+
       <tr>
         <td>Course:</td>
         <td><%= @student_course.course.title %></td>
@@ -17,7 +19,9 @@
         <td><%= @student_course.grade %></td>
       </tr>      
     </table>
-    <% if @student_course.status == "enrolled" %>
+    <% if @student_course.status == "enrolled" && current_user.utype =="student"%>
     <%= link_to 'Drop the course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <% elsif @student_course.status == "enrolled" && ( current_user.utype =="admin" || current_user.utype =="instructor")    %>
+    <%= link_to 'Remove student from the course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
     <% end %>
 <%= link_to 'Back', student_courses_path %>
