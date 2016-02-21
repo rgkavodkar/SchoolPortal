@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
     @courses = Course.all
 
     if params[:search]
-      @courses = Course.search(params[:search]).order("created_at DESC")
+      @courses = Course.search(params[:search],params[:searchby]).order("created_at DESC")
     else
        @courses = Course.all.order('created_at DESC')
     end

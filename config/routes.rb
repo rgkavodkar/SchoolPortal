@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'course_history_display' =>'student_courses#course_history_display'
   get 'enrolledshow'=>'student_courses#enrolledshow'
   get 'pendingshow'=>'student_courses#pendingshow'
+  put 'complete'=> 'student_courses#complete'
 
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'

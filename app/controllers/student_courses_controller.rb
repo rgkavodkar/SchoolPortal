@@ -57,7 +57,7 @@ class StudentCoursesController < ApplicationController
   def destroy
     @student_course.destroy
     respond_to do |format|
-      format.html { redirect_to student_courses_url, notice: 'Student course was successfully destroyed.' }
+      format.html { redirect_to course_history_display_url, notice: 'Student course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,7 +71,13 @@ class StudentCoursesController < ApplicationController
   end
 
   def complete
-      StudentCourse.update_all(["status=?", "approved"], :id => params[:student_course_ids])
+    if params[:Enrollment]
+      StudentCourse.where("id=?",params[:student_course_ids]).update_all(["status=?", "enrolled"])
+      redirect_to coursehistorydisplayinstructor_url
+    else
+      StudentCourse.where("id=?",params[:student_course_ids]).delete_all
+      redirect_to coursehistorydisplayinstructor_url
+    end  
   end
 
 
