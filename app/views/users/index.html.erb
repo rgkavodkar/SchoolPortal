@@ -11,31 +11,34 @@
 <%= link_to "Students", users_path(subset:"students") %>
 </div>
 <h3>Viewing all users </h3>
-<table class="table">
-	<thead>
-		<th>Name</th>
-		<th>Email address</th>
-		<th>User type</th>
-		<th></th>
-	</thead>
-	<tbody>
-		<% @users.each do |user| %>
-			<tr>
-				<td><%= link_to "#{user.name}", user%></td>
-				<td><%= user.email %></td>
-				<td><%= user.utype %></td>
-				<td>
-					<% if current_user.utype == "admin" && user.utype != "admin" %>
-						<% history_url = "#" %>
-						<%if user.utype == "student" %> 
-							<% history_url = get_student_history_path(user:user)  %>
-						<% elsif user.utype == "instructor" %>
-						 	<% history_url = get_instructor_history_path(user:user) %>
+
+<div class="container" style="height:70vh; overflow:auto">
+	<table class="table">
+		<thead>
+			<th>Name</th>
+			<th>Email address</th>
+			<th>User type</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= link_to "#{user.name}", user%></td>
+					<td><%= user.email %></td>
+					<td><%= user.utype %></td>
+					<td>
+						<% if current_user.utype == "admin" && user.utype != "admin" %>
+							<% history_url = "#" %>
+							<%if user.utype == "student" %> 
+								<% history_url = get_student_history_path(user:user)  %>
+							<% elsif user.utype == "instructor" %>
+							 	<% history_url = get_instructor_history_path(user:user) %>
+							<% end %>
+							<%= link_to 'View History', history_url%> 
 						<% end %>
-						<%= link_to 'View History', history_url%> 
-					<% end %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

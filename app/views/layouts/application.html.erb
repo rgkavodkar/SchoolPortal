@@ -16,8 +16,10 @@
 	        	<div class="alert alert-<%= message_type %>"><%= message %></div>
 	      	<% end %>
       	</div>
-    	<div class="container">
+    	<div class="container" style="height:80vh">
+    		<!-- <div class="container" style="height:80vh; overflow:auto"> -->
       		<%= yield %>
+      		<!-- </div> -->
     	</div>
 
     	<%= render 'layouts/footer' %>

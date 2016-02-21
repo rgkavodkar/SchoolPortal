@@ -18,6 +18,8 @@
 <br/>
 
 <h1>Listing All Courses</h1>
+
+<div class="container" style="height:45vh; overflow:auto">
 <table class="table">
   <thead>
     <th>Course</th>
@@ -46,8 +48,5 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <br>
-
-<% if(current_user.utype == "admin") %>
-  <%= link_to 'New Course', new_course_path %>
-<% end %>

@@ -64,15 +64,11 @@ footer small {
   float: left;
 }
 
-footer ul {
-  list-style: none;
-}
 
-footer ul li {
-  float: left;
-  margin-left: 15px;
-}
 
+#footer { text-align: center; }
+#footer ul { list-style: none; }
+#footer ul li { display: inline; }
 
 /* Forms */
 
