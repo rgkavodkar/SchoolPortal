@@ -1,40 +1,23 @@
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
-	<div class="btn-group" role="group">
-		<button id="users-all" type="button" class="btn btn-default">All</button>
-	</div>
-	<div class="btn-group" role="group">
-		<button id="users-admins" type="button" class="btn btn-default">Admins</button>
-	</div>
-	<div class="btn-group" role="group">
-		<button id="users-instructor" type="button" class="btn btn-default">Instructors</button>
-	</div>
-	<div class="btn-group" role="group">
-		<button id="users-students" type="button" class="btn btn-default">Students</button>
-	</div>
-</div>
+<%= link_to "All users", users_path  %> | 
+<%= link_to "Admins", users_path(subset:"admins")   %> | 
+<%= link_to "Instructors", users_path(subset:"instructors")   %> | 
+<%= link_to "Students", users_path(subset:"students")   %>
 
-<br/>
-
+<h3>Viewing all users </h3>
 <table class="table">
 	<thead>
 		<th>Name</th>
 		<th>Email address</th>
 		<th>User type</th>
-<!-- 		<th>Phone number</th>
-		<th>Address</th> -->
 		<th></th>
 	</thead>
 	<tbody>
 		<% @users.each do |user| %>
 			<tr>
-				<td><%= user.name %></td>
+				<td><%= link_to "#{user.name}", user%></td>
 				<td><%= user.email %></td>
 				<td><%= user.utype %></td>
-<!-- 				<td><%= user.ph_number %></td>
-				<td><%= user.address %></td> -->
-				<td> 
-					<%= link_to 'View Profile', user %>
-					|
+				<td>
 					<% if current_user.utype == "admin" %>
 						<%= link_to 'View History', "#" %> 
 					<% end %>
