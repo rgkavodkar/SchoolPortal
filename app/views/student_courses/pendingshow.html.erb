@@ -11,9 +11,10 @@
 
   <tbody>
 
-   
+   <% flag = false%>
     <% @student_courses.each do |student_course| %>
     <% if  student_course !=nil %>
+      <% flag = true%>
       <tr>
         <td><%= student_course.user.name %></td>
         <td><%= student_course.course.title %></td>
@@ -23,8 +24,10 @@
     <% end %>
     </br></br></br>
     <tr>
+    <% if !flag %>
       <td><%= submit_tag "Enroll", :name=>'Enrollment'%></td>
       <td><%= submit_tag "Reject", :name=>'Rejection'%></td>
+    <% end %>
     </tr>
   </tbody>
 </table>
