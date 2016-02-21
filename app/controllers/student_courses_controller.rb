@@ -29,7 +29,8 @@ class StudentCoursesController < ApplicationController
 
     respond_to do |format|
       if @student_course.save
-        format.html { redirect_to @student_course, notice: 'Student course was successfully created.' }
+        format.html { redirect_to @student_course}
+         flash[:success] = "Student has been in the pending list for the course , till approval"
         format.json { render :show, status: :created, location: @student_course }
       else
         format.html { render :new }
@@ -43,7 +44,8 @@ class StudentCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @student_course.update(student_course_params)
-        format.html { redirect_to @student_course, notice: 'Student course was successfully updated.' }
+        format.html { redirect_to @student_course}
+        flash[:success] = "Updated the course-student details"
         format.json { render :show, status: :ok, location: @student_course }
       else
         format.html { render :edit }

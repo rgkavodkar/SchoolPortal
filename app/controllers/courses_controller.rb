@@ -62,7 +62,6 @@ class CoursesController < ApplicationController
       if @course.update(course_params)
         format.html { redirect_to @course}
          flash[:success] ='Course was successfully updated.'
-          , notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -81,7 +80,8 @@ class CoursesController < ApplicationController
     else      
       @course.destroy
       respond_to do |format|
-        format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+        format.html { redirect_to courses_url}
+         flash[:success] ='Course was successfully destroyed.' 
         format.json { head :no_content }
       end
     end
@@ -108,7 +108,8 @@ class CoursesController < ApplicationController
         end
       end 
     else
-      redirect_to courses_url, notice: 'Student already enrolled for course.'  
+      redirect_to courses_url
+       flash[:success] ='Student already enrolled for course.'
     end  
   end
 
