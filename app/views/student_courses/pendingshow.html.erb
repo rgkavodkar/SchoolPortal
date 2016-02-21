@@ -1,36 +1,38 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'Enrollment approval') %>
 
 <h1>Students waiting for approval</h1>
 <%= form_tag( { :action => :complete, }, { :method => :put }) %>
 <table class="table">
-  <thead>
-    <th>Student</th>
-    <th>Course</th>
-    <th></th>
-  </thead>
+    <thead>
+        <th>Student</th>
+        <th>Course</th>
+        <th></th>
+    </thead>
 
-  <tbody>
-
-   <% flag = false%>
-    <% @student_courses.each do |student_course| %>
-    <% if  student_course !=nil %>
-      <% flag = true%>
-      <tr>
-        <td><%= student_course.user.name %></td>
-        <td><%= student_course.course.title %></td>
-        <td><%= check_box_tag "student_course_ids[]", student_course.id %></td>
-      </tr>
-    <% end %>
-    <% end %>
-    </br></br></br>
-    <tr>
-    <% if flag %>
-      <td><%= submit_tag "Enroll", :name=>'Enrollment'%></td>
-      <td><%= submit_tag "Reject", :name=>'Rejection'%></td>
-    <% end %>
-    </tr>
-  </tbody>
+    <tbody>
+        <% flag = false%>
+        <% @student_courses.each do |student_course| %>
+            <% if  student_course !=nil %>
+                <% flag = true%>
+                <tr>
+                    <td><%= student_course.user.name %></td>
+                    <td><%= student_course.course.title %></td>
+                    <td><%= check_box_tag "student_course_ids[]", student_course.id %></td>
+                </tr>
+            <% end %>
+        <% end %>
+        </br></br></br>
+    </tbody>
 </table>
+
+<% if flag %>
+    <table class="table">
+        <tr>
+        <td><%= submit_tag "Enroll", :name=>'Enrollment', class:'form-control btn-sm btn btn-primary'%></td>
+        <td><%= submit_tag "Reject", :name=>'Rejection', class:'form-control btn-sm btn btn-primary'%></td>
+        </tr>
+    </table>
+<% end %>
 <%= form_tag %>
 
 

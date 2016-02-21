@@ -113,12 +113,12 @@ end
 end
 
 # Create announcements for courses
-15.times do |n|
+30.times do |n|
 	num_announcements = rand(1..5)
 
 	num_announcements.times do |i|
-		Announcement.create!(title: "Announcement #{n+1}",
+		Announcement.create!(title: "Announcement #{i+1}-c#{n+1}",
 		content: Faker::Lorem.paragraphs(paragraph_count = rand(1..3)).join,
-		course_id: n + 16)
+		course_id: n + 1)
 	end
 end

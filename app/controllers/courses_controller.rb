@@ -100,7 +100,7 @@ class CoursesController < ApplicationController
             respond_to do |format| 
                 if @student_course.save
                     format.html { redirect_to course_history_display_url}
-                    flash[:success] = "Student successfully enrolled to the course" 
+                    flash[:success] = "A request has been sent to instructor to add you to the course." 
                     format.json { render :show, status: :created, location: @student_course }
                 else
                     format.html { render :index}
