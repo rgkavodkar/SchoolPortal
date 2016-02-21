@@ -1,2 +1,20 @@
-<h1>Announcements#index</h1>
-<p>Find me in app/views/announcements/index.html.erb</p>
+<% provide(:title, 'All announcements') %>
+
+<h3>Viewing all users </h3>
+<table class="table">
+	<thead>
+		<th>Course</th>
+		<th>Announcement Title</th>
+		<th>Content</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<% @announcements.each do |announcement| %>
+			<tr>
+				<td><%= announcement.course_id %></td>
+				<td><%= announcement.title %></td>
+				<td><%= announcement.content %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

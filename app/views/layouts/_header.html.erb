@@ -7,13 +7,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">SCHOOL PORTAL</a>
+          <%=  link_to "SCHOOL PORTAL", root_url, class:'navbar-brand' %>
+          <!-- <a class="navbar-brand" href="#">SCHOOL PORTAL</a> -->
         </div>
     	<nav>           
             <ul class="nav navbar-nav navbar-right">
                 <% if logged_in? %>
-                    <li><%= link_to "Welcome, #{current_user.name}", "#" %></li>
-                    <li><%= link_to "Profile", user_path(current_user) %></li>
+                    <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
                     <% if current_user.utype == "admin" %>
                     
                         <li class="dropdown">

@@ -7,8 +7,55 @@ class UsersController < ApplicationController
 	end
 
 	def index
+		subset = params[:subset]
 		if current_user.utype == "admin"
-			@users = User.all
+			if subset == "all"
+				@users = User.all
+			elsif subset == "admins"
+				@users = User.where(utype:"admin")
+			elsif subset == "instructors"
+				@users = User.where(utype:"instructor")
+			elsif subset == "students"
+				@users = User.where(utype:"student")
+			else
+				@users = User.all
+			end				
+		else 
+			# Need to change it to an unauthorized page
+			redirect_to unauthorized_url
+			# respond_to do |format|
+			# 	format.html {redirect_to :controller => 'static_pages', :action => 'unauthorized'}
+			# end
+		end
+	end
+
+	def viewadmins
+		if current_user.utype == "admin"
+			@users = User.where(utype:"admin")
+		else 
+			# Need to change it to an unauthorized page
+			redirect_to unauthorized_url
+			# respond_to do |format|
+			# 	format.html {redirect_to :controller => 'static_pages', :action => 'unauthorized'}
+			# end
+		end
+	end
+
+	def viewinstructors
+		if current_user.utype == "admin"
+			@users = User.where(utype:"instructor")
+		else 
+			# Need to change it to an unauthorized page
+			redirect_to unauthorized_url
+			# respond_to do |format|
+			# 	format.html {redirect_to :controller => 'static_pages', :action => 'unauthorized'}
+			# end
+		end
+	end
+
+	def viewstudents
+		if current_user.utype == "admin"
+			@users = User.where(utype:"student")
 		else 
 			# Need to change it to an unauthorized page
 			redirect_to unauthorized_url
