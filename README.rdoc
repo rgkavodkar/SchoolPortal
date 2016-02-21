@@ -1,12 +1,14 @@
 Super Admin credentials
 
 username: admin@sp.com
+
 password: password
 
 
 Preconfigured admin credentials
 
 username: admin_@sp.com     <replace _ by a number in the range 1-30, eg, admin3@sp.com>
+
 password:password
 
 
