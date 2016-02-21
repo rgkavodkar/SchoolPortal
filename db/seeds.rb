@@ -119,6 +119,6 @@ end
 	num_announcements.times do |i|
 		Announcement.create!(title: Faker::Lorem.sentence(word_count = 4),
 		content: Faker::Lorem.paragraphs(paragraph_count = rand(1..3)).join,
-		course_id: n)
+		course_id: n + 16)
 	end
 end
