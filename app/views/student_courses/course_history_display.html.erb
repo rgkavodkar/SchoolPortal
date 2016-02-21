@@ -1,3 +1,4 @@
+<% if (current_user.utype =="student" || current_user.utype=="instructor" ) %>
 <h1>Listing Your Courses</h1>
 
 <table class="table">
@@ -16,6 +17,8 @@
         <td><%= student_course.status %></td>
         <td><%= link_to 'view', student_course %> </td>
       </tr>
+    <% else %>
+     
     <% end %>
     <% end %>
   </tbody>
@@ -23,3 +26,6 @@
 
 
 <br>
+<% else %>
+ <% controller.redirect_to coursesall_path %>
+<%end %>

@@ -1,3 +1,4 @@
+       <div class="col-md-6 col-md-offset-3">
       <table class="table">
 
       <tr>
@@ -23,4 +24,6 @@
     <% elsif @student_course.status == "enrolled" && ( current_user.utype =="admin" || current_user.utype =="instructor")    %>
     <%= link_to 'Remove student from the course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
     <% end %>
-<%= link_to 'Back', student_courses_path %>
+</tr>
+</table>
+</div>

@@ -59,9 +59,14 @@ class StudentCoursesController < ApplicationController
   def destroy
     @student_course.destroy
     respond_to do |format|
+      if current_user.utype =="student"
        flash[:success] = "Student was succesfully removed from the course"
-      format.html { redirect_to course_history_display_url}
+      format.html { redirect_to course_history_display_url }
       flash[:success] = "Student was succesfully removed from the course"
+      else
+        format.html { redirect_to course_history_display_url }
+     end
+
     end
   end
 

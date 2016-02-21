@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   delete 'enrolledshow'=>'student_courses#enrolledshow'
   get 'pendingshow'=>'student_courses#pendingshow'
   put 'complete'=> 'student_courses#complete'
-
+  get 'student_course_index'=> 'student_courses#index'
   get 'coursesall'=>'courses#index'
   get 'coursecreate'=>'courses#new'
   patch 'courseedit'=>'courses#edit'
