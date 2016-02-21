@@ -13,20 +13,6 @@ class StudentCoursesController < ApplicationController
     def show
     end
 
-    # DELETE /student_courses/1
-    # DELETE /student_courses/1.json
-    def destroy
-        @student_course.destroy
-        respond_to do |format|
-            if current_user.utype =="student"
-                flash[:success] = "Student was succesfully removed from the course"
-                format.html { redirect_to course_history_display_url }
-            else
-                format.html { redirect_to course_history_display_url }
-            end
-        end
-    end
-
     # GET /student_courses/new
     def new
         @student_course = StudentCourse.new
@@ -69,15 +55,15 @@ class StudentCoursesController < ApplicationController
     end
 
     # DELETE /student_courses/1
-    # # DELETE /student_courses/1.json
-    # def destroy
-    #     @student_course.destroy
-    #     respond_to do |format|
-    #         flash[:success] = "Student was succesfully removed from the course"
-    #         format.html { redirect_to course_history_display_url}
-    #         flash[:success] = "Student was succesfully removed from the course"
-    #     end
-    # end
+    # DELETE /student_courses/1.json
+    def destroy
+        @student_course.destroy
+        respond_to do |format|
+            flash[:success] = "Student was succesfully removed from the course"
+            format.html { redirect_to course_history_display_url}
+            flash[:success] = "Student was succesfully removed from the course"
+        end
+    end
 
     def enrolledshow
         @student_courses = StudentCourse.all.map{|course| course if ((course.course_id == params[:id].to_i) && (course.status=="enrolled"))}
