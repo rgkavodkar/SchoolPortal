@@ -1,10 +1,15 @@
 <% provide(:title, 'View users') %>
+<div>
+	<p>
 
+	</p>
+</div>
+<div>
 <%= link_to "All", users_path%> | 
 <%= link_to "Admins", users_path(subset:"admins") %> | 
 <%= link_to "Instructors", users_path(subset:"instructors") %> | 
 <%= link_to "Students", users_path(subset:"students") %>
-
+</div>
 <h3>Viewing all users </h3>
 <table class="table">
 	<thead>

@@ -1,4 +1,11 @@
 <% provide(:title, current_user.name + '\'s courses') %>
+
+<div>
+    <p>
+
+    </p>
+</div>
+
 <%= link_to "All", course_history_display_path%> | 
 <%= link_to "Pending", course_history_display_path(subset:"pending") %> | 
 <%= link_to "Enrolled", course_history_display_path(subset:"enrolled") %> | 
