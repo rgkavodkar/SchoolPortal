@@ -16,9 +16,6 @@ Rails.application.routes.draw do
   get 'history' => "users#history"
   get 'instructorsignup' => 'users#newinstructor'
   get 'adminsignup' => 'users#newadmin'
-  get 'viewadmins' => 'users#viewadmins'
-  get 'viewinstructors' => 'users#viewinstructors'
-  get 'viewstudents' => 'users#viewstudents'
   
   get 'login' => 'user_session#new'
   post 'login' => 'user_session#create'
