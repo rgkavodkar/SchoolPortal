@@ -12,10 +12,28 @@ class StudentCoursesController < ApplicationController
     # GET /student_courses/1.json
     def show
     end
+<<<<<<< HEAD
+  end
+
+  # DELETE /student_courses/1
+  # DELETE /student_courses/1.json
+  def destroy
+    @student_course.destroy
+    respond_to do |format|
+      if current_user.utype =="student"
+       flash[:success] = "Student was succesfully removed from the course"
+      format.html { redirect_to course_history_display_url }
+      flash[:success] = "Student was succesfully removed from the course"
+      else
+        format.html { redirect_to course_history_display_url }
+     end
+
+=======
 
     # GET /student_courses/new
     def new
         @student_course = StudentCourse.new
+>>>>>>> c6f9a7ce075f9d3fbba676726e805b8e35a5df88
     end
 
     # GET /student_courses/1/edit
