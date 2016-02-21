@@ -1,17 +1,25 @@
 Super Admin credentials
+
 username: admin@sp.com
 password: password
 
+
 Preconfigured admin credentials
+
 username: admin_@sp.com     <replace _ by a number in the range 1-30, eg, admin3@sp.com>
 password:password
 
+
 Preconfigured instructor credentials
+
 username: ins_@sp.com     <replace _ by a number in the range 1-30, eg, ins3@sp.com>
+
 password:password
 
 Preconfigured student credentials
+
 username: stu_@sp.com     <replace _ by a number in the range 1-300, eg, stu3@sp.com>
+
 password:password
 
 All of the actions that each type of user is supposed to do is listed in the dropdown 'Actions' in the top navbar
