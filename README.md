@@ -1,28 +1,23 @@
-== README
+== README == 
+Follow the below instructions to log in to the system (using the preconfigured accounts) and find the relevant actions
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== SUPER ADMIN ==
+username: admin@sp.com
+password: password
 
-Things you may want to cover:
+== ADMINS == <Might not hold good if deleted>
+username: admin_@sp.com 		<replace _ with a number in the range 1-5>
+password: password
 
-* Ruby version
+== INSTRUCTORS == <Might not hold good if deleted>
+username: ins_@sp.com 		<replace _ with a number in the range 1-30>
+password: password
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+== STUDENTS == <Might not hold good if deleted>
+username: stu_@sp.com 		<replace _ with a number in the range 1-300>
+password: password
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== ACTIONS ==
+All the permitted actions are listed in the top navigation bar
+Some of the actions are not listed in that, but can be performed upon visiting one of those listed pages
