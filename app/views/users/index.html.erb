@@ -20,8 +20,14 @@
 				<td><%= user.email %></td>
 				<td><%= user.utype %></td>
 				<td>
-					<% if current_user.utype == "admin" %>
-						<%= link_to 'View History', "#" %> 
+					<% if current_user.utype == "admin" && user.utype != "admin" %>
+						<% history_url = "#" %>
+						<%if user.utype == "student" %> 
+							<% history_url = get_student_history_path(user:user)  %>
+						<% elsif user.utype == "instructor" %>
+						 	<% history_url = get_instructor_history_path(user:user) %>
+						<% end %>
+						<%= link_to 'View History', history_url%> 
 					<% end %>
 				</td>
 			</tr>

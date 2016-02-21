@@ -1,11 +1,6 @@
-<% provide(:title, current_user.name + '\'s courses') %>
-<%= link_to "All", course_history_display_path%> | 
-<%= link_to "Pending", course_history_display_path(subset:"pending") %> | 
-<%= link_to "Enrolled", course_history_display_path(subset:"enrolled") %> | 
-<%= link_to "Completed", course_history_display_path(subset:"completed") %>
+<% provide(:title, @student.name + '\'s courses') %>
 
-
-<h1>Listing Your Courses</h1>
+<h1>Listing <%="#{@student.name}'s"%> Courses</h1>
 
 <table class="table">
   <thead>

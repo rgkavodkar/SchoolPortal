@@ -1,12 +1,23 @@
+
+<h1>Search for course</h1>
+<div class="control-group ">
+    <%= form_tag(courses_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Courses", class:'form-control' %>
+        <select id="searchby" name="searchby" class="form-control">
+            <option selected disabled hidden>Select field to search by</option>
+            <option>Title</option>
+            <option>Description</option>
+            <option>Instructor</option>
+            <option>Status</option>
+        </select>
+        <%= submit_tag "Search", class:'form-control btn btn-primary' %>
+    <% end %>
+</div>
+
+<br/>
+<br/>
+
 <h1>Listing All Courses</h1>
-
-<%= form_tag(courses_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
-<select id="searchby" name="searchby"><option>title</option><option>description</option><option>instructor</option><option>status</option></select>
-<%= submit_tag "Search" %>
-<% end %>
-
-
 <table class="table">
   <thead>
     <th>Course</th>
@@ -35,7 +46,8 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+<% if(current_user.utype == "admin") %>
+  <%= link_to 'New Course', new_course_path %>
+<% end %>

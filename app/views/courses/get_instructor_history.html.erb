@@ -1,7 +1,6 @@
-<% provide(:title, current_user.name + '\'s courses') %>
+<% provide(:title, @instructor.name + '\'s courses') %>
 
-
-<h1>Listing Your Courses</h1>
+<h1>Listing <%="#{@instructor.name}'s"%> Courses</h1>
 
 <table class="table">
   <thead>

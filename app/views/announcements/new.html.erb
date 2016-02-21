@@ -15,6 +15,7 @@
 			<%= f.label :content, "Content*" %>
 			<%= f.text_area :content, class:'form-control' %>
 
+            <%= f.label :course_id, "Course*" %>
 			<%= f.select(:course_id, {}, {}, {class:'form-control'}) do %>
                 <% @relevant_courses.each do |course| %>
                     <% if course != nil %>
