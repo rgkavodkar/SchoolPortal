@@ -1,20 +1,22 @@
 <% provide(:title, 'All announcements') %>
 
 <h3>Viewing all users </h3>
-<table class="table">
-	<thead>
-		<th>Course</th>
-		<th>Announcement Title</th>
-		<th>Content</th>
-		<th></th>
-	</thead>
-	<tbody>
-		<% @announcements.each do |announcement| %>
-			<tr>
-				<td><%= announcement.course_id %></td>
-				<td><%= announcement.title %></td>
-				<td><%= announcement.content %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class="container" style="height:70vh; overflow:auto">
+	<table class="table">
+		<thead>
+			<th>Course</th>
+			<th>Announcement Title</th>
+			<th>Content</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% @announcements.each do |announcement| %>
+				<tr>
+					<td><%= announcement.course_id %></td>
+					<td><%= announcement.title %></td>
+					<td><%= announcement.content %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

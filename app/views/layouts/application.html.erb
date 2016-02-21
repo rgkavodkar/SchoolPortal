@@ -11,15 +11,15 @@
 		<%= render 'layouts/header' %>
     
     	<!-- The actual pages from the views are loaded here -->
-    	<div class="container">
-
-    		<div class="col-md-6 col-md-offset-3">
-	    		<% flash.each do |message_type, message| %>
-		        	<div class="alert alert-<%= message_type %>"><%= message %></div>
-		      	<% end %>
-	      	</div>
-
+		<div class="col-md-6 col-md-offset-3">
+    		<% flash.each do |message_type, message| %>
+	        	<div class="alert alert-<%= message_type %>"><%= message %></div>
+	      	<% end %>
+      	</div>
+    	<div class="container" style="height:80vh">
+    		<!-- <div class="container" style="height:80vh; overflow:auto"> -->
       		<%= yield %>
+      		<!-- </div> -->
     	</div>
 
     	<%= render 'layouts/footer' %>
