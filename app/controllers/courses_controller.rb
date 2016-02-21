@@ -42,7 +42,8 @@ class CoursesController < ApplicationController
 
       respond_to do |format|
         if @course.save
-          format.html { redirect_to @course, notice: 'Course was successfully created.' }
+          format.html { redirect_to @course }
+          flash[:success] ='Course was successfully created.'
           format.json { render :show, status: :created, location: @course }
         else
           format.html { render :new }
@@ -59,7 +60,9 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to @course}
+         flash[:success] ='Course was successfully updated.'
+          , notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -96,7 +99,8 @@ class CoursesController < ApplicationController
       @student_course.status = 'pending'
       respond_to do |format| 
         if @student_course.save
-          format.html { redirect_to courses_url, notice: 'Student successfully enrolled to course.' }
+          format.html { redirect_to course_history_display_url}
+          flash[:success] = "Student successfully enrolled to the course" 
           format.json { render :show, status: :created, location: @student_course }
         else
           format.html { render :index}
