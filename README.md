@@ -20,7 +20,7 @@ password: password
 
 == INSTRUCTORS == <Might not hold good if deleted>
 
-username: ins_@sp.com 		<replace _ with a number in the range 1-30>
+username: ins_@sp.com 		[replace _ with a number in the range 1-30]
 
 password: password
 
@@ -28,7 +28,7 @@ password: password
 
 == STUDENTS == <Might not hold good if deleted>
 
-username: stu_@sp.com 		<replace _ with a number in the range 1-300>
+username: stu_@sp.com 		[replace _ with a number in the range 1-300]
 
 password: password
 
