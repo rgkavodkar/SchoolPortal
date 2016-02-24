@@ -10,27 +10,31 @@
 
                 <table class="table">
                     <tr>
-                        <td>Course:</td>
+                        <td>Student name</td>
+                        <td><%= @student_course.user.name %></td>
+                    </tr>
+                    <tr>
+                        <td>Course</td>
                         <td><%= @student_course.course.title %></td>
                     </tr>
                     <tr>
-                        <td>Course Instructor:</td>
+                        <td>Course instructor</td>
                         <td><%= @student_course.course.user.name %></td>
                     </tr>
                     <tr>
-                        <td>Status :</td>
+                        <td>Status</td>
                         <td><%= @student_course.course.status %></td>
                     </tr>
                     <tr>
-                        <td>Grade:</td>
+                        <td>Grade</td>
                         <td><%= @student_course.grade %></td>
                     </tr>      
                 </table>
                 
                 <% if @student_course.status == "enrolled" && current_user.utype =="student"%>
-                    <%= link_to 'Drop course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
+                    <%= link_to "Drop course", @student_course, method: :delete, data: {confirm: "Are you sure?"} %>
                 <% elsif @student_course.status == "enrolled" && ( current_user.utype =="admin" || current_user.utype =="instructor")    %>
-                    <%= link_to 'Remove student ', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>|
+                    <%= link_to "Drop student ", @student_course, method: :delete, data: {confirm: "Are you sure?"} %>|
                     <%= link_to " Post grade", edit_student_course_path  %>
                 <% end %>
             </div>
