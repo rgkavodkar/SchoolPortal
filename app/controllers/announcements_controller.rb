@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
 	before_action :logged_user, only: [:new, :index]
 
  	def new
- 		if current_user.utype == "instructor"
+ 		if current_user.utype == "instructor" 
 
 			if Course.where(user_id:current_user.id).count == 0
 				# instructor doesnt have any courses, cant make an announcement
@@ -11,6 +11,9 @@ class AnnouncementsController < ApplicationController
 				@relevant_courses = Course.all.map{|course| [course.title, course.id] if course.user_id == current_user.id}
 				@announcement = Announcement.new
 			end
+		elsif current_user.utype == "admin"
+			@relevant_courses = Course.all.map {|course| [course.title, course.id]}
+			@announcement = Announcement.new
 		else 
 			redirect_to unauthorized_url
 		end

@@ -1,35 +1,39 @@
+<% provide(:title, 'Student\'s course details') %>
 
 <div class='row'>
-<div class="col-md-6 col-md-offset-3">
-<h1>Students Course Details</h1>
-      <table class="table">
+    <div class="col-md-6 col-md-offset-3">
 
-      <tr>
-        <td>Course:</td>
-        <td><%= @student_course.course.title %></td>
-      </tr>
-      <tr>
-        <td>Course Instructor:</td>
-        <td><%= @student_course.course.user.name %></td>
-      </tr>
-      <tr>
-        <td>Status :</td>
-        <td><%= @student_course.course.status %></td>
-      </tr>
-      <tr>
-      <tr>
-        <td>Grade:</td>
-        <td><%= @student_course.grade %></td>
-      </tr>      
-    </table>
-    <% if @student_course.status == "enrolled" && current_user.utype =="student"%>
-    <%= link_to 'Drop the course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
-    <% elsif @student_course.status == "enrolled" && ( current_user.utype =="admin" || current_user.utype =="instructor")    %>
-    <%= link_to 'Remove student from the course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
-    <br>
-    <%= link_to "Edit Student grade", edit_student_course_path  %>
-    <% end %>
-</tr>
-</table>
-</div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>Student's Course Details</h1>
+                
+
+                <table class="table">
+                    <tr>
+                        <td>Course:</td>
+                        <td><%= @student_course.course.title %></td>
+                    </tr>
+                    <tr>
+                        <td>Course Instructor:</td>
+                        <td><%= @student_course.course.user.name %></td>
+                    </tr>
+                    <tr>
+                        <td>Status :</td>
+                        <td><%= @student_course.course.status %></td>
+                    </tr>
+                    <tr>
+                        <td>Grade:</td>
+                        <td><%= @student_course.grade %></td>
+                    </tr>      
+                </table>
+                
+                <% if @student_course.status == "enrolled" && current_user.utype =="student"%>
+                    <%= link_to 'Drop course', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>
+                <% elsif @student_course.status == "enrolled" && ( current_user.utype =="admin" || current_user.utype =="instructor")    %>
+                    <%= link_to 'Remove student ', @student_course, method: :delete, data: {confirm: 'Are you sure?'} %>|
+                    <%= link_to " Post grade", edit_student_course_path  %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>

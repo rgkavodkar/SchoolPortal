@@ -22,13 +22,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><%=  link_to "Course catalogue", coursesall_path%></li>
+                                <li><%=  link_to "View announcements", announcements_path %></li>
+                                <li><%=  link_to "Post an announcement", new_announcement_path %></li>
+                                <li><%=  link_to "Add a course", coursecreate_path %></li>
+                                <li role="separator" class="divider"></li>
                                 <li><%=  link_to "User list", users_path %></li>
-                                <li><%=  link_to "Announcements", announcements_path %></li>
                                 <!-- <li><%=  link_to "Enrollments", "#" %></li> -->
                                 <!-- <li><%=  link_to "Grading", "#" %></li> -->
                                 <li><%=  link_to "Add an admin", adminsignup_path %></li>
                                 <li><%=  link_to "Add an instructor", instructorsignup_path %></li>
-                                <li><%=  link_to "Add a course", coursecreate_path %></li>
+                                <li><%=  link_to "Add an student", signup_path %></li>
                             </ul>
                         </li>
                     <% elsif current_user.utype == "instructor" %>

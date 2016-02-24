@@ -1,45 +1,57 @@
+<% provide(:title, @course.title + ' details') %>
+
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
-        <h3> Course Details </h3>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 style="display:inline-block;"> <%= @course.title %></h3>
+                <% if ( current_user.utype =="admin")%>
+                    <%= link_to edit_course_path(@course) do %>
+                        Edit <i class="glyphicon glyphicon-pencil"></i>
+                    <% end %>
+                    <%= link_to @course, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        Delete <i class="glyphicon glyphicon-remove"></i>
+                    <% end %>
+                <% elsif(current_user.utype=="student" && @course.status != "Inactive") %>
+                    <%= link_to :controller=>:courses, :action=>:enroll, :id=>@course.id do %>
+                        Enroll me <i class="glyphicon glyphicon-list-alt"></i>
+                    <% end %>
+                <% end %>
+             
+                <table class="table">
+                    <tr>
+                        <td>Title:</td>
+                        <td><%= @course.title %></td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td><%= @course.description %></td>
+                    </tr>
+                    <tr>
+                        <td>Start date:</td>
+                        <td><%= @course.start_date  %></td>
+                    </tr>
+                        <tr>
+                        <td>End date:</td>
+                        <td><%= @course.end_date %></td>
+                    </tr>
+                        <tr>
+                        <td>Instructor:</td>
+                        <td><%= @course.user.name %> </td>
+                    </tr>
+                    <tr>
+                        <td>Status:</td>
+                        <td><%= @course.status %></td>
+                    </tr>      
+                </table>
+                <% if ( current_user.utype =="admin" ||  current_user.utype =="instructor" )%>
+                    <%=  link_to "Enrolled students",  controller: "student_courses", action: "enrolledshow", id:@course, class:'form-control' %> | <%=  link_to "Enrollment requests" ,controller: "student_courses",action: "pendingshow", id:@course, class:'form-control' %>
+                <% end %>
+            </div>
+        </div>
 
-        <% if ( current_user.utype =="admin" ||  current_user.utype =="instructor" )%>
-            <h5> <%=  link_to "List of Enrolled students",  controller: "student_courses", action: "enrolledshow", id:@course, class:'form-control' %> | <%=  link_to "List of Pending students" ,controller: "student_courses",action: "pendingshow", id:@course, class:'form-control' %></h5>
-        <% elsif(current_user.utype=="student" && @course.status != "Inactive") %>
-            <h5> <%=  link_to "Enroll Me",:controller=>:courses, :action=>:enroll, :id=>@course.id, class:'form-control' %> </h5>
-        <% end %>
-        
-        <table class="table">
-            <tr>
-                <td>Title:</td>
-                <td><%= @course.title %></td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td><%= @course.description %></td>
-            </tr>
-            <tr>
-                <td>Start date:</td>
-                <td><%= @course.start_date  %></td>
-            </tr>
-                <tr>
-                <td>End date:</td>
-                <td><%= @course.end_date %></td>
-            </tr>
-                <tr>
-                <td>Instructor:</td>
-                <td><%= @course.user.name %> </td>
-            </tr>
-            <tr>
-                <td>Status:</td>
-                <td><%= @course.status %></td>
-            </tr>      
-        </table>
-        <br/>
-
-        <% if ( current_user.utype =="admin")%>
-            <h5><%= link_to 'Edit course', edit_course_path(@course)%> </h5>
-        <% end %> 
+         
 
         <br/>
         <h3>Announcements</h3>
