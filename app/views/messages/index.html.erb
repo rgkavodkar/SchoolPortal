@@ -2,7 +2,8 @@
 
    <%= link_to 'Show Previous', '?m=all' %>
 
-<div class="ui segment">
+<div class="container" style="height:70vh; overflow:auto">
+<table class="table table-hover">
   <% @messages.each do |message| %>
     <% if message.body %>
       <% user = User.find(message.user_id) %>
@@ -25,7 +26,9 @@
       </div>
     <% end %>
   <% end %>
+  </table>
 </div>
+
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
@@ -33,6 +36,7 @@
     <%= f.text_area :body, class: "form-control" %>
   </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <%= f.text_field :read, value: false, type: "hidden"  %>
   <div>
     <%= f.submit "Reply !", class: "btn btn-primary" %>
   </div>
