@@ -1,83 +1,83 @@
 <% provide(:title, @course.title + ' details') %>
 
+        <div class="container" style="height:80vh; overflow:auto">
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h3 style="display:inline-block;"> <%= @course.title %></h3>
-                <% if ( current_user.utype =="admin")%>
-                    <%= link_to edit_course_path(@course) do %>
-                        Edit <i class="glyphicon glyphicon-pencil"></i>
-                    <% end %>
-                    <%= link_to @course, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        Delete <i class="glyphicon glyphicon-remove"></i>
-                    <% end %>
-                <% elsif(current_user.utype=="student" && @course.status != "Inactive") %>
-                    <%= link_to :controller=>:courses, :action=>:enroll, :id=>@course.id do %>
-                        Enroll me <i class="glyphicon glyphicon-list-alt"></i>
-                    <% end %>
-                <% end %>
-             
-                <table class="table">
-                    <tr>
-                        <td>Title:</td>
-                        <td><%= @course.title %></td>
-                    </tr>
-                    <tr>
-                        <td>Description:</td>
-                        <td><%= @course.description %></td>
-                    </tr>
-                    <tr>
-                        <td>Start date:</td>
-                        <td><%= @course.start_date  %></td>
-                    </tr>
-                        <tr>
-                        <td>End date:</td>
-                        <td><%= @course.end_date %></td>
-                    </tr>
-                        <tr>
-                        <td>Instructor:</td>
-                        <td><%= @course.user.name %> &nbsp;&nbsp;&nbsp;&nbsp;     
-                        <% if ((current_user.id!=@course.user.id) && (current_user.utype=="student")) %>
-                        <i class="glyphicon glyphicon-envelope"> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: @course.user.id), method: 'post'%></i></td>
-                        <%end %>
-                    </tr>
-                    <tr>
-                        <td>Status:</td>
-                        <td><%= @course.status %></td>
-                    </tr>      
-                </table>
-                <% if ( current_user.utype =="admin" ||  current_user.utype =="instructor" )%>
-                    <%=  link_to "Enrolled students",  controller: "student_courses", action: "enrolledshow", id:@course, class:'form-control' %> | <%=  link_to "Enrollment requests" ,controller: "student_courses",action: "pendingshow", id:@course, class:'form-control' %>
-                <% end %>
-            </div>
-        </div>
-
-         
-
-        <br/>
-        <h3>Announcements</h3>
-        <% @course_announcements.each do |announcement| %>
             <div class="panel panel-default">
-            <div class="panel-heading">
-
-                <div style="text-align: left">
-                    <%= announcement.title %>
-                    <span style="float:right">
-                    <i>Posted at: <%= announcement.created_at.strftime("%H:%M %m-%d-%y ") %></i>
-                    </span>
+                <div class="panel-body">
+                    <h3 style="display:inline-block;"> <%= @course.title %></h3>
+                    <% if ( current_user.utype =="admin")%>
+                        <%= link_to edit_course_path(@course) do %>
+                            Edit <i class="glyphicon glyphicon-pencil"></i>
+                        <% end %>
+                        <%= link_to @course, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                            Delete <i class="glyphicon glyphicon-remove"></i>
+                        <% end %>
+                    <% elsif(current_user.utype=="student" && @course.status != "Inactive") %>
+                        <%= link_to :controller=>:courses, :action=>:enroll, :id=>@course.id do %>
+                            Enroll me <i class="glyphicon glyphicon-list-alt"></i>
+                        <% end %>
+                    <% end %>
+                 
+                    <table class="table">
+                        <tr>
+                            <td>Title:</td>
+                            <td><%= @course.title %></td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td><%= @course.description %></td>
+                        </tr>
+                        <tr>
+                            <td>Start date:</td>
+                            <td><%= @course.start_date  %></td>
+                        </tr>
+                            <tr>
+                            <td>End date:</td>
+                            <td><%= @course.end_date %></td>
+                        </tr>
+                            <tr>
+                            <td>Instructor:</td>
+                            <td><%= @course.user.name %> &nbsp;&nbsp;&nbsp;&nbsp;     
+                            <% if ((current_user.id!=@course.user.id) && (current_user.utype=="student")) %>
+                            <i class="glyphicon glyphicon-envelope"> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: @course.user.id), method: 'post'%></i></td>
+                            <%end %>
+                        </tr>
+                        <tr>
+                            <td>Status:</td>
+                            <td><%= @course.status %></td>
+                        </tr>      
+                    </table>
+                    <% if ( current_user.utype =="admin" ||  current_user.utype =="instructor" )%>
+                        <%=  link_to "Enrolled students",  controller: "student_courses", action: "enrolledshow", id:@course, class:'form-control' %> | <%=  link_to "Enrollment requests" ,controller: "student_courses",action: "pendingshow", id:@course, class:'form-control' %>
+                    <% end %>
                 </div>
+            </div>
 
-            </div>
-            <div class="panel-body">
-                <%= announcement.content %>
-            </div>
-            </div>
+             
+
             <br/>
-        <% end %>
+            <h3>Announcements</h3>
+            <% @course_announcements.each do |announcement| %>
+                <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <div style="text-align: left">
+                        <%= announcement.title %>
+                        <span style="float:right">
+                        <i>Posted at: <%= announcement.created_at.strftime("%H:%M %m-%d-%y ") %></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="panel-body">
+                    <%= announcement.content %>
+                </div>
+                </div>
+                <br/>
+            <% end %>
+            </div>
         </div>
-    
   
 </div>
 

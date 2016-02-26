@@ -5,10 +5,22 @@ class CoursesController < ApplicationController
     # GET /courses
     # GET /courses.json
     def index
-        @courses = Course.all
+        # @courses = Course.all
 
-        if params[:search]
-            @courses = Course.search(params[:search],params[:searchby]).order("created_at DESC")
+        if params[:search].blank?
+            @courses = Course.all.order('created_at DESC')
+        elsif params[:search]
+            if params[:searchby] == 'ID'
+                @courses = Course.where("id like #{params[:search]}")
+            elsif params[:searchby] == 'Title'
+                @courses = Course.where("title LIKE ?","%#{params[:search]}%")
+            elsif params[:searchby] == 'Description'
+                @courses = Course.where("description LIKE ?","%#{params[:search]}%")
+            elsif params[:searchby] == 'Instructor'
+                @courses = Course.joins(:user).merge(User.where(" name like ?","%#{params[:search]}%"))
+            elsif params[:searchby] == 'Status'
+                @courses = Course.where("lower(status) = ?","#{params[:search].downcase}")
+            end 
         else
             @courses = Course.all.order('created_at DESC')
         end
@@ -17,7 +29,6 @@ class CoursesController < ApplicationController
     # GET /courses/1
     # GET /courses/1.json
     def show
-    # @course = Course.find(params[:id])
         @course_announcements = Announcement.where(course_id:@course.id)
     end
 

@@ -1,20 +1,6 @@
+<% provide(:title, 'Course list') %>
 
 <h1>Search for course</h1>
-<!-- <div class="form-inline">
-    <div class="form-group">
-        <%= form_tag(courses_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search Courses", class:'form-control' %>
-            <select id="searchby" name="searchby" class="form-control">
-                <option selected disabled hidden>Select field to search by</option>
-                <option>Title</option>
-                <option>Description</option>
-                <option>Instructor</option>
-                <option>Status</option>
-            </select>
-            <%= submit_tag "Search", class:'form-control btn btn-primary' %>
-        <% end %>
-    </div>
-</div> -->
 
 <div class="row">
     <%= form_tag(courses_path, :method => "get", id: "search-form") do %>

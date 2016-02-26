@@ -30,7 +30,8 @@ class AnnouncementsController < ApplicationController
   	end
 
   	def index
-  		@announcements = Announcement.all
+  		# @announcements = Announcement.all
+  		@announcements = Announcement.joins(:course).merge(Course.all).order('created_at DESC')
   		# course_id = User.find(params[:course_id])
   		# @course_announcements = Announcement.where(course_id: course_id)
   	end

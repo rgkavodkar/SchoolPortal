@@ -11,17 +11,9 @@ class Course < ActiveRecord::Base
 
   def validate_start_before_end 
     if (start_date != nil && end_date != nil)
-  	if self.start_date> self.end_date
-  		errors.add(:start_date,"Start date should be before end date")
-  	end
-  end
-  end
-  
-  def self.search(search,searchby)
-    if searchby =="instructor"
-      searchby ="user_id"
+    	if self.start_date> self.end_date
+    		errors.add(:start_date,"Start date should be before end date")
+    	end
     end
-     where("#{searchby} LIKE ?", "%#{search}%") 
-     # where("description LIKE ?", "%#{search}%")
   end
 end
