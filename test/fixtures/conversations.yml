@@ -2,8 +2,8 @@
 
 one:
   sender_id: 1
-  receiver_id: MyString
+  receiver_id: 1
 
 two:
   sender_id: 1
-  receiver_id: MyString
+  receiver_id: 1
