@@ -34,7 +34,7 @@
                             </ul>
                         </li>
                     <% elsif current_user.utype == "instructor" %>
-                    
+                        <li><%= link_to "Mailbox", conversations_path %></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Actions <span class="caret"></span>
@@ -45,6 +45,7 @@
                             </ul>
                         </li>
                     <% elsif current_user.utype == "student" %>
+                        <li><%= link_to "Mailbox", conversations_path %></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Actions <span class="caret"></span>

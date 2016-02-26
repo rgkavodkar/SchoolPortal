@@ -1,0 +1,45 @@
+<% if ((@conversation.sender_id == current_user.id ) || (@conversation.receiver_id == current_user.id )) %>
+
+   <%= link_to 'Show Previous', '?m=all' %>
+
+<div class="ui segment">
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+      <div class="item">
+        <div class="content">
+          <div class="header">
+          <% if user.id == current_user.id %>
+          <strong> Me : </strong> 
+          <% else %>
+          <strong><%= user.name %></strong> 
+          <% end %>
+          <%= message.message_time %></div>
+          <div class="list">
+            <div class="item">
+              <i class="right triangle icon"></i>
+              <%= message.body %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div>
+    <%= f.submit "Reply !", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+</div>
+</div>
+<% else %> 
+<h4>You are not allowed to see others conversations !! They are private ! </h4>
+<% end %>

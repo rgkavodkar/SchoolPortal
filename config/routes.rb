@@ -40,6 +40,10 @@ Rails.application.routes.draw do
   resources :student_courses
   resources :announcements
   
+  resources :conversations do
+    resources :messages
+  end
+  resources :messages
 
 
 

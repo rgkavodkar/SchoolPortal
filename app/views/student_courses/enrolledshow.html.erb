@@ -14,7 +14,10 @@
     <% @student_courses.each do |student_course| %>
     <% if  student_course !=nil %>
       <tr>
-        <td><%= student_course.user.name %></td>
+        <td><%= student_course.user.name %>
+        <% if ((current_user.id!=student_course.user.id) && (current_user.utype=="instructor")) %>
+                        <i class="glyphicon glyphicon-envelope"> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: student_course.user.id), method: 'post'%></i>
+                        <%end %></td>
         <td><%= student_course.grade %></td>
         <td><%= student_course.status %></td>
         <td><%= link_to 'Show', student_course %></td>

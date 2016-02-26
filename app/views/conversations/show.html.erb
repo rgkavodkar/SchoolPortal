@@ -1,0 +1,18 @@
+<div class="ui segment">
+  <h3>All Conversations</h3>
+  <div class="ui list">
+    <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.receiver_id== current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% receiver= User.find(conversation.receiver_id) %>
+          <% else %>
+            <% receiver = User.find(conversation.sender_id) %>
+          <% end %>
+          <%= link_to receiver.name, conversation_messages_path(conversation)%>
+        <% end %>
+      <% end %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

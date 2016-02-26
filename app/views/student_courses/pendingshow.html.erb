@@ -15,7 +15,10 @@
             <% if  student_course !=nil %>
                 <% flag = true%>
                 <tr>
-                    <td><%= student_course.user.name %></td>
+                    <td><%= student_course.user.name %>
+                    <% if ((current_user.id!=student_course.user.id) && (current_user.utype=="instructor")) %>
+                        <i class="glyphicon glyphicon-envelope"> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: student_course.user.id), method: 'post'%></i>
+                        <%end %></td></td>
                     <td><%= student_course.course.title %></td>
                     <td><%= check_box_tag "student_course_ids[]", student_course.id %></td>
                 </tr>

@@ -38,7 +38,10 @@
                     </tr>
                         <tr>
                         <td>Instructor:</td>
-                        <td><%= @course.user.name %> </td>
+                        <td><%= @course.user.name %> 
+                        <% if ((current_user.id!=@course.user.id) && (current_user.utype=="student")) %>
+                        <i class="glyphicon glyphicon-envelope"> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: @course.user.id), method: 'post'%></i></td>
+                        <%end %>
                     </tr>
                     <tr>
                         <td>Status:</td>
