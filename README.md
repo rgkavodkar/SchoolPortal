@@ -1,6 +1,6 @@
 == README == 
 
-Follow the below instructions to log in to the system (using the preconfigured accounts) and find the relevant actions
+Follow the below instructions to log in to the system (using the preconfigured accounts) and find the relevant actions. For more information on finding certain pages, visit the site's about page (in the footer).
 
 == SUPER ADMIN ==
 
