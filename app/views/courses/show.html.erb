@@ -60,19 +60,18 @@
             <h3>Announcements</h3>
             <% @course_announcements.each do |announcement| %>
                 <div class="panel panel-default">
-                <div class="panel-heading">
+                    <div class="panel-heading">
 
-                    <div style="text-align: left">
-                        <%= announcement.title %>
-                        <span style="float:right">
-                        <i>Posted at: <%= announcement.created_at.strftime("%H:%M %m-%d-%y ") %></i>
-                        </span>
+                        <div style="text-align: left">
+                            <%= announcement.title %>
+                            <span style="float:right">
+                            <i>Posted at: <%= announcement.created_at.strftime("%H:%M %m-%d-%y ") %></i>
+                            </span>
+                        </div>
                     </div>
-
-                </div>
-                <div class="panel-body">
-                    <%= announcement.content %>
-                </div>
+                    <div class="panel-body">
+                        <%= announcement.content %>
+                    </div>
                 </div>
                 <br/>
             <% end %>

@@ -14,8 +14,8 @@
 				<% elsif current_user.utype == "admin" && current_user.email != @user.email %>
 					<h3 style="display:inline-block;"> <%= @user.name %>'s profile </h3>
 					<%= link_to @user, method: :delete, data: {confirm: 'Are you sure?'} do %>
-		                	Delete <i class="glyphicon glyphicon-remove" style="display:inline-block;"></i>
-		                <% end %>        
+		              	Delete <i class="glyphicon glyphicon-remove" style="display:inline-block;"></i>
+		            <% end %>        
 		  		<% else %>
 		  			<h3 style="display:inline-block;"> <%= @user.name %>'s profile </h3>
 		  		<% end %>
