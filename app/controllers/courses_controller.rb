@@ -62,7 +62,7 @@ class CoursesController < ApplicationController
                 end
             end
         else
-            edirect_to unauthorized_url
+            redirect_to unauthorized_url
         end
     end
 

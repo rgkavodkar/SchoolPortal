@@ -1,6 +1,60 @@
-<h1>Editing Course</h1>
+<% provide(:title, 'Edit ' + @course.title + ' details') %>
 
-<%= render 'form' %>
+<div class="container" style="height:80vh; overflow:auto">
+	<div class = "center">
+	    <h1>Edit course</h1>
+	</div>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+
+	<div class="row">
+	    <div class="col-md-6 col-md-offset-3">
+	        <% if @course.errors.any? %>
+	            <div id="error_explanation">
+	                <div class="alert alert-danger">
+	                    The form contains <%= pluralize(@course.errors.count, "error") %>.
+	                    <ul>
+	                        <% @course.errors.full_messages.each do |error_msg| %>
+	                            <li><%= error_msg %></li>
+	                        <% end %>
+	                    </ul>
+	                </div>
+	            </div>
+	        <% end %>
+
+	        <%= form_for(@course) do |f| %>
+
+	        	<%= f.label :title, "Title" %>
+	            <%= f.text_field :title, class:'form-control' %>
+
+	            <%= f.label :description, "Description" %>
+	            <%= f.text_area :description, class:'form-control' %>
+
+	            <%= f.label :start_date, "Start date" %>
+	            <%= f.date_select :start_date, { :order => [:year, :month, :day], :prompt => { year: 'Select year', day:'Select day', month:'Select month' }}, {class: "form-control"}  %>
+
+	            <%= f.label :end_date, "End date" %>
+	            <%= f.date_select :end_date, { :order => [:year, :month, :day], :prompt => { year: 'Select year', day:'Select day', month:'Select month' }}, {class: "form-control"}  %>
+	            
+				<%= f.label :user_id, "Instructor" %><br> 
+	            <% users_array = User.all.map{|user| [user.name, user.id] if user.utype =="instructor"} %>            
+	            
+	            <%= f.select(:user_id, {}, {}, {class:'form-control'}) do %>
+	                <% users_array.each do |user| %>
+	                    <% if user != nil %>
+	                        <%= content_tag(:option, user.first, value: user.last) %>
+	                    <% end %>
+	                <% end %>
+	            <% end %>
+
+	            <%= f.select(:status, {}, {}, {class:'form-control'}) do %>
+	                <%=content_tag(:option, "Inactive", value: "Inactive") %>
+	                <%=content_tag(:option, "Active", value: "Active") %>
+	            <% end %> 
+	             
+	            <%= f.submit "Edit course", class: "btn btn-primary" %>
+
+	        <% end %>
+	    </div>
+	</div>
+
+</div>
